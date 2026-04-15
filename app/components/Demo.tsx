@@ -377,7 +377,7 @@ function ScenarioColumn({
     | Extract<AgentEvent, { type: "message" }>
     | undefined;
   const finalId = finalProductId(message?.content);
-  const topCandidate = overrideCandidates?.[0] ?? extractTopCandidate(toolEvents);
+  const matchedCandidate = findCandidateById(toolEvents, finalId, overrideCandidates);
 
   return (
     <div className="bg-panel flex flex-col">
@@ -421,7 +421,7 @@ function ScenarioColumn({
         <RecommendationCard
           content={message.content}
           tone={tone}
-          topCandidate={topCandidate}
+          matchedCandidate={matchedCandidate}
         />
       )}
     </div>
@@ -471,11 +471,22 @@ function finalProductId(content?: string): string | undefined {
   return content.match(/FINAL:\s*(\S+)/)?.[1];
 }
 
-function extractTopCandidate(events: AgentEvent[]): Candidate | undefined {
+function findCandidateById(
+  events: AgentEvent[],
+  productId: string | undefined,
+  overrides?: Candidate[],
+): Candidate | undefined {
+  if (!productId) return undefined;
+  if (overrides) {
+    const hit = overrides.find((c) => c.product_id === productId);
+    if (hit) return hit;
+  }
   for (const e of events) {
     if (e.type !== "tool_result") continue;
     const cands = (e.result as { candidates?: Candidate[] }).candidates;
-    if (cands && cands[0]) return cands[0];
+    if (!cands) continue;
+    const hit = cands.find((c) => c.product_id === productId);
+    if (hit) return hit;
   }
   return undefined;
 }
@@ -848,20 +859,19 @@ function Divider() {
 function RecommendationCard({
   content,
   tone,
-  topCandidate,
+  matchedCandidate,
 }: {
   content: string;
   tone: "muted" | "accent";
-  topCandidate?: Candidate;
+  matchedCandidate?: Candidate;
 }) {
   const finalMatch = content.match(/FINAL:\s*(\S+)/);
   const productId = finalMatch?.[1];
   const rationale = finalMatch
     ? content.slice(0, finalMatch.index).trim()
     : content.trim();
-  const matched = topCandidate && topCandidate.product_id === productId ? topCandidate : undefined;
-  const name = matched?.name;
-  const price = matched?.price_usd;
+  const name = matchedCandidate?.name;
+  const price = matchedCandidate?.price_usd;
   return (
     <div
       className={
