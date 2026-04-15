@@ -174,7 +174,7 @@ export const DRACHMA_TOOLS = [
     function: {
       name: "drachma_feed_query",
       description:
-        "Rank products against a user preference profile using Drachma's four-dimension composite: verified quality, expert coverage, outcome alignment, value. Pass the full preference_profile including weights, constraints, and composite_weights. Supported category: 'chef_knife'.",
+        "Rank products against a user preference profile using the Mandarins four-dimension composite: verified quality, expert coverage, outcome alignment, value. Pass the full preference_profile including weights, constraints, and composite_weights. Supported category: 'chef_knife'.",
       parameters: {
         type: "object",
         properties: {
@@ -233,7 +233,7 @@ export const SYSTEM_PROMPT_TRADITIONAL =
   "End with a line: FINAL: <product_id>.";
 
 export const SYSTEM_PROMPT_DRACHMA =
-  "You are a procurement agent. You have access to the Drachma recommendation layer: creator " +
+  "You are a procurement agent. You have access to the Mandarins recommendation layer: creator " +
   "attestations, post-purchase outcome data, and niche-fit scoring. Always start with " +
   "drachma_feed_query — pass the user's full preference_profile including weights, constraints, " +
   "and composite_weights. If useful, call drachma_get_attestations on your top 1-2 candidates " +

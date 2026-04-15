@@ -20,7 +20,7 @@ function SiteHeader() {
   return (
     <header className="border-b border-hairline">
       <div className="w-full max-w-[1240px] mx-auto px-8 lg:px-12 py-5 flex items-center justify-between">
-        <span className="display text-[22px] tracking-tight font-medium">drachma</span>
+        <span className="display text-[22px] tracking-tight font-medium">Mandarins</span>
         <nav className="flex items-center gap-6">
           <span className="label">v0 · demo</span>
           <a
@@ -56,7 +56,7 @@ function Hero() {
       <p className="text-[17px] leading-[1.6] text-muted max-w-[58ch]">
         When AI agents mediate purchases, the products that win today are the ones
         with the best SEO and the biggest budgets — not the best products.
-        Drachma replaces that with a structured recommendation layer scored across
+        Mandarins replaces that with a structured recommendation layer scored across
         four dimensions: creator-verified quality, expert coverage of the user&apos;s
         niche, similarity-weighted post-purchase outcomes, and value.
       </p>
@@ -102,7 +102,7 @@ function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-hairline">
       <div className="w-full max-w-[1240px] mx-auto px-8 lg:px-12 py-8 flex items-center justify-between">
-        <span className="label">drachma · 2026</span>
+        <span className="label">Mandarins · 2026</span>
         <span className="label">demo · mock data · local backend</span>
       </div>
     </footer>

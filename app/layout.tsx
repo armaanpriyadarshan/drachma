@@ -21,7 +21,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Drachma — attention economics for agents",
+  title: "Mandarins — attention economics for agents",
   description:
     "A recommendation layer agents query when making purchase decisions. Powered by verified human testers, not marketing spend.",
 };

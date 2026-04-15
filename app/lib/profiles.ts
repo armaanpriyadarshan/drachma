@@ -20,20 +20,19 @@ export type ProfilePreset = {
 export const PROFILES: Record<ProfileId, ProfilePreset> = {
   A: {
     id: "A",
-    label: "Edge-obsessed carbon enthusiast",
+    label: "First serious knife, budget-first",
     summary:
-      "Daily serious home cooking. I maintain my own edges on a whetstone and don't mind reactive carbon steel. Edge retention and steel quality matter more than anything else, and I'll pay for the right knife.",
-    narrative:
-      "Price is secondary. Composite leans heavy on verified quality and niche coverage.",
+      "First real chef's knife. Sharp out of the box, comfortable to hold, stainless so it doesn't need fussing over. Budget under $180. I'll upgrade later.",
+    narrative: "High value weight. Quality matters but so does price.",
     preference_profile: {
       weights: {
-        edge_retention: 0.45,
-        steel_quality: 0.30,
-        balance: 0.15,
-        handle_ergonomics: 0.10,
+        out_of_box_sharpness: 0.35,
+        handle_ergonomics: 0.25,
+        corrosion_resistance: 0.20,
+        balance: 0.20,
       },
-      constraints: { max_price_usd: 400, blade_length_mm: [200, 240] },
-      composite_weights: { quality: 0.50, coverage: 0.25, outcome: 0.20, value: 0.05 },
+      constraints: { max_price_usd: 180 },
+      composite_weights: { quality: 0.25, coverage: 0.15, outcome: 0.25, value: 0.35 },
     },
   },
   B: {
@@ -56,19 +55,20 @@ export const PROFILES: Record<ProfileId, ProfilePreset> = {
   },
   C: {
     id: "C",
-    label: "First serious knife, budget-first",
+    label: "Edge-obsessed carbon enthusiast",
     summary:
-      "First real chef's knife. Sharp out of the box, comfortable to hold, stainless so it doesn't need fussing over. Budget under $180. I'll upgrade later.",
-    narrative: "High value weight. Quality matters but so does price.",
+      "Daily serious home cooking. I maintain my own edges on a whetstone and don't mind reactive carbon steel. Edge retention and steel quality matter more than anything else, and I'll pay for the right knife.",
+    narrative:
+      "Price is secondary. Composite leans heavy on verified quality and niche coverage.",
     preference_profile: {
       weights: {
-        out_of_box_sharpness: 0.35,
-        handle_ergonomics: 0.25,
-        corrosion_resistance: 0.20,
-        balance: 0.20,
+        edge_retention: 0.45,
+        steel_quality: 0.30,
+        balance: 0.15,
+        handle_ergonomics: 0.10,
       },
-      constraints: { max_price_usd: 180 },
-      composite_weights: { quality: 0.25, coverage: 0.15, outcome: 0.25, value: 0.35 },
+      constraints: { max_price_usd: 400, blade_length_mm: [200, 240] },
+      composite_weights: { quality: 0.50, coverage: 0.25, outcome: 0.20, value: 0.05 },
     },
   },
 };

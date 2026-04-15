@@ -179,7 +179,7 @@ export default function Demo() {
         />
         <ScenarioColumn
           label="Scenario B"
-          title="Drachma feed"
+          title="Mandarins feed"
           subtitle="Quality · expert coverage · outcome · value"
           tone="accent"
           events={eventsByScenario.drachma}
@@ -283,7 +283,7 @@ function ProfileSection({
         <WeightsPanel
           label="Composite weights"
           weights={profile.preference_profile.composite_weights}
-          sub="How the four Drachma dimensions are blended for this user."
+          sub="How the four Mandarins dimensions are blended for this user."
           tone="accent"
         />
       </div>
@@ -553,7 +553,7 @@ function describeStep(step: Step): { headline: string; blurb?: string } {
       };
     case "drachma_feed_query":
       return {
-        headline: "Queried the Drachma feed",
+        headline: "Queried the Mandarins feed",
         blurb: "Quality · coverage · outcome · value",
       };
     case "drachma_get_attestations":
@@ -943,7 +943,7 @@ function FeedbackLoop({
         <p className="text-sm text-muted max-w-2xl">
           Submit an outcome for the recommended product. Creator reputations update
           based on how well each attestation predicted this user&apos;s satisfaction, and
-          the Drachma ranking above re-renders with the new signal.
+          the Mandarins ranking above re-renders with the new signal.
         </p>
       </div>
 
