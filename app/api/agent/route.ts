@@ -2,19 +2,16 @@
  * Runs both scenarios through OpenAI function calling and streams tool-call /
  * tool-result / message events as Server-Sent Events.
  *
- * Event shape (JSON per SSE message):
- *   { type: "start", scenario }
- *   { type: "tool_call", scenario, name, args }
- *   { type: "tool_result", scenario, name, result }
- *   { type: "message", scenario, content }
- *   { type: "done", scenario }
- *   { type: "error", scenario, message }
+ * Client posts: { profile_id: "A" | "B" | "C" }. Server looks up the full
+ * preference profile from PROFILES and builds the user message so nothing
+ * magical happens on the client.
  */
 
 import OpenAI from "openai";
 import {
-  DEFAULT_USER_REQUEST,
   DRACHMA_TOOLS,
+  PROFILES,
+  type ProfileId,
   SYSTEM_PROMPT_DRACHMA,
   SYSTEM_PROMPT_TRADITIONAL,
   TOOL_IMPLS,
@@ -24,7 +21,7 @@ import {
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const MODEL = process.env.OPENAI_MODEL ?? "gpt-4.1";
+const MODEL = process.env.OPENAI_MODEL ?? "gpt-4o-mini";
 
 type Scenario = "traditional" | "drachma";
 
@@ -101,13 +98,21 @@ export async function POST(req: Request) {
     return new Response("OPENAI_API_KEY not set", { status: 500 });
   }
 
-  let body: { user_request?: unknown } = {};
+  let body: { profile_id?: ProfileId } = {};
   try {
     body = await req.json();
   } catch {
     // allow empty body
   }
-  const userRequest = body.user_request ?? DEFAULT_USER_REQUEST;
+  const profileId: ProfileId = (body.profile_id && PROFILES[body.profile_id])
+    ? body.profile_id
+    : "A";
+  const profile = PROFILES[profileId];
+
+  const userRequest = {
+    summary: profile.summary,
+    preference_profile: profile.preference_profile,
+  };
 
   const client = new OpenAI();
   const encoder = new TextEncoder();
@@ -117,11 +122,12 @@ export async function POST(req: Request) {
       const emit: Emit = (event) => {
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
       };
+      emit({ type: "profile", profile });
       try {
-        await Promise.all([
-          runScenario(client, "traditional", userRequest, emit),
-          runScenario(client, "drachma", userRequest, emit),
-        ]);
+        // Run sequentially so a small per-key RPM doesn't rate-limit us, and
+        // so the streaming output is readable (A completes before B starts).
+        await runScenario(client, "traditional", userRequest, emit);
+        await runScenario(client, "drachma", userRequest, emit);
       } catch (e) {
         emit({ type: "error", scenario: "*", message: (e as Error).message });
       } finally {

@@ -1,4 +1,4 @@
-"""Drachma demo API. Three endpoints: feed query, attestations, outcome submission."""
+"""Drachma demo API."""
 
 from __future__ import annotations
 
@@ -9,11 +9,11 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from .ranking import rank
+from .ranking import rank, update_reputations_for_outcome
 from .store import store
 
 
-app = FastAPI(title="Drachma API", version="0.1.0")
+app = FastAPI(title="Drachma API", version="0.2.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,6 +26,9 @@ app.add_middleware(
 class PreferenceProfile(BaseModel):
     weights: dict[str, float] = Field(default_factory=dict)
     constraints: dict[str, Any] | None = None
+    # Per-profile weights on the four composite dimensions. Intentionally exposed
+    # so the UI can display them — nothing hidden.
+    composite_weights: dict[str, float] | None = None
 
 
 class FeedQuery(BaseModel):
@@ -36,7 +39,7 @@ class FeedQuery(BaseModel):
 
 class OutcomePayload(BaseModel):
     product_id: str
-    user_profile_tag: str
+    preference_vector: dict[str, float]
     event: str  # kept | returned | repurchased | exchanged
     satisfaction: float
     recommendation_id: str | None = None
@@ -61,7 +64,7 @@ def feed_query(body: FeedQuery) -> dict[str, Any]:
     profile = body.preference_profile.model_dump()
     results = rank(profile, store, limit=body.limit)
     for r in results:
-        r["rationale"] = _rationale(r)
+        r["rationale"] = _rationale(r, profile.get("weights", {}))
     return {"category": body.category, "candidates": results}
 
 
@@ -77,8 +80,8 @@ def attestations(product_id: str) -> dict[str, Any]:
         enriched.append({
             **a,
             "creator_name": creator.get("name"),
-            "creator_reputation": creator.get("reputation"),
-            "creator_specialty": creator.get("specialty"),
+            "creator_reputation": store.current_reputation(a["creator_id"]),
+            "creator_specialties": creator.get("specialties", []),
         })
     return {
         "product_id": product_id,
@@ -91,27 +94,85 @@ def attestations(product_id: str) -> dict[str, Any]:
 
 @app.post("/outcomes")
 def outcomes(body: OutcomePayload) -> dict[str, Any]:
-    if store.product(body.product_id) is None:
+    product = store.product(body.product_id)
+    if product is None:
         raise HTTPException(404, f"Unknown product_id {body.product_id!r}")
+
+    # Apply reputation updates BEFORE storing the outcome so that the re-rank
+    # uses the new reputation values.
+    deltas = update_reputations_for_outcome(
+        store,
+        body.product_id,
+        body.preference_vector,
+        body.satisfaction,
+    )
     record = store.add_outcome(body.model_dump())
-    affected = len(store.attestations_for(body.product_id))
-    return {"accepted": True, "outcome": record, "affected_attestations": affected}
+
+    # Re-rank from the submitter's profile so the UI can show the live ranking shift.
+    reranked = rank(
+        {"weights": body.preference_vector, "constraints": None},
+        store,
+        limit=8,
+    )
+    for r in reranked:
+        r["rationale"] = _rationale(r, body.preference_vector)
+
+    return {
+        "accepted": True,
+        "outcome": record,
+        "reputation_deltas": deltas,
+        "reranked_candidates": reranked,
+    }
 
 
-def _rationale(candidate: dict[str, Any]) -> str:
+# ---------------------------------------------------------------------------
+# Rationale
+# ---------------------------------------------------------------------------
+
+def _rationale(candidate: dict[str, Any], weights: dict[str, float]) -> str:
+    """
+    Short prose citing the per-dimension evidence. Prefers to name specialist
+    creators who are credentialed for the user's weighted attributes.
+    """
     atts = store.attestations_for(candidate["product_id"])
     if not atts:
         return "No creator attestations on record."
-    top_creators = sorted(
-        atts,
-        key=lambda a: (store.creator(a["creator_id"]) or {}).get("reputation", 0),
-        reverse=True,
-    )[:3]
-    names = ", ".join((store.creator(a["creator_id"]) or {}).get("name", "?") for a in top_creators)
-    avg_edge = mean(a["scores"].get("edge_retention", 0) for a in atts)
-    avg_steel = mean(a["scores"].get("steel_quality", 0) for a in atts)
-    return (
-        f"{len(atts)} verified creators tested this product, including {names}. "
-        f"Mean edge_retention {avg_edge:.1f}/10, steel_quality {avg_steel:.1f}/10. "
-        f"Ranked against the {candidate['matched_profile_tag']} outcome cohort."
-    )
+
+    # Pick the top-weighted user attributes.
+    top_attrs = sorted(weights.items(), key=lambda kv: -kv[1])[:2]
+    top_attr_names = [a for a, _ in top_attrs if _ > 0]
+
+    # Find specialist creators for those attrs, citing only their aligned specialties.
+    from .ranking import SPECIALTY_ATTRS, creator_specialty_attrs
+    specialist_cites: list[str] = []
+    for att in atts:
+        creator = store.creator(att["creator_id"]) or {}
+        spec_attrs = creator_specialty_attrs(creator)
+        if not any(a in spec_attrs for a in top_attr_names):
+            continue
+        aligned = [
+            s for s in creator.get("specialties", [])
+            if SPECIALTY_ATTRS.get(s, set()) & set(top_attr_names)
+        ] or creator.get("specialties", [])[:2]
+        rep = store.current_reputation(creator.get("creator_id", ""))
+        specialist_cites.append(
+            f"{creator.get('name','?')} (rep {rep:.2f}, specializes in {'/'.join(aligned[:2])})"
+        )
+        if len(specialist_cites) >= 2:
+            break
+
+    opener = f"{len(atts)} verified creators tested this product"
+    if specialist_cites:
+        opener += f" including {', '.join(specialist_cites)}"
+
+    pieces = [opener]
+    if top_attr_names:
+        means_str = []
+        for a in top_attr_names:
+            vals = [att["scores"].get(a) for att in atts if att["scores"].get(a) is not None]
+            if vals:
+                means_str.append(f"{a.replace('_',' ')} {mean(vals):.1f}/10")
+        if means_str:
+            pieces.append("Mean " + ", ".join(means_str))
+
+    return ". ".join(pieces) + "."

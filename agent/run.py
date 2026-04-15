@@ -1,11 +1,12 @@
-"""Drachma demo agent harness.
+"""Drachma CLI agent harness.
 
-Runs a simulated procurement agent twice against the same user request:
+Two scenarios against the same user request:
 
-  Scenario A — ranks via ad-spend / SEO / review-volume (traditional).
-  Scenario B — queries the Drachma API (attestations + outcomes + niche fit).
+  A (traditional)  ad spend / SEO / review volume
+  B (drachma)      the Drachma feed
 
-Uses OpenAI function calling to let the model decide when to call tools and when to recommend.
+Uses OpenAI function calling. Duplicates the preset profiles from the Next app
+to stay self-contained.
 """
 
 from __future__ import annotations
@@ -26,34 +27,50 @@ MOCK_PATH = Path(__file__).resolve().parent.parent / "backend" / "data" / "mock.
 MODEL = os.environ.get("OPENAI_MODEL", "gpt-4.1")
 
 
-# ---------------------------------------------------------------------------
-# User request
-# ---------------------------------------------------------------------------
-
-USER_REQUEST = {
-    "summary": (
-        "I want a single chef's knife I'll use daily for serious home cooking. "
-        "I maintain my own edges on a whetstone, I don't mind reactive carbon steel, "
-        "and I care about edge retention and steel quality above everything else. "
-        "Budget up to $400. Blade length between 200 and 240 mm."
-    ),
-    "preference_profile": {
-        "weights": {
-            "edge_retention": 0.45,
-            "steel_quality": 0.30,
-            "balance": 0.15,
-            "handle_ergonomics": 0.10,
+PROFILES: dict[str, dict[str, Any]] = {
+    "A": {
+        "label": "Edge-obsessed carbon enthusiast",
+        "summary": (
+            "Daily serious home cooking. I maintain my own edges on a whetstone and don't "
+            "mind reactive carbon steel. Edge retention and steel quality matter more than "
+            "anything else, and I'll pay for the right knife."
+        ),
+        "preference_profile": {
+            "weights": {"edge_retention": 0.45, "steel_quality": 0.30, "balance": 0.15, "handle_ergonomics": 0.10},
+            "constraints": {"max_price_usd": 400, "blade_length_mm": [200, 240]},
+            "composite_weights": {"quality": 0.50, "coverage": 0.25, "outcome": 0.20, "value": 0.05},
         },
-        "constraints": {
-            "max_price_usd": 400,
-            "blade_length_mm": [200, 240],
+    },
+    "B": {
+        "label": "Precision workhorse, low maintenance",
+        "summary": (
+            "A knife that moves through prep cleanly and stays that way without babying it. "
+            "Balance, handle ergonomics, fit-and-finish, and corrosion resistance. Willing to "
+            "spend for the right geometry."
+        ),
+        "preference_profile": {
+            "weights": {"balance": 0.35, "handle_ergonomics": 0.30, "corrosion_resistance": 0.20, "fit_and_finish": 0.15},
+            "constraints": {"max_price_usd": 400},
+            "composite_weights": {"quality": 0.35, "coverage": 0.25, "outcome": 0.30, "value": 0.10},
+        },
+    },
+    "C": {
+        "label": "First serious knife, budget-first",
+        "summary": (
+            "First real chef's knife. Sharp out of the box, comfortable to hold, stainless so "
+            "it doesn't need fussing over. Budget under $180. I'll upgrade later."
+        ),
+        "preference_profile": {
+            "weights": {"out_of_box_sharpness": 0.35, "handle_ergonomics": 0.25, "corrosion_resistance": 0.20, "balance": 0.20},
+            "constraints": {"max_price_usd": 180},
+            "composite_weights": {"quality": 0.25, "coverage": 0.15, "outcome": 0.25, "value": 0.35},
         },
     },
 }
 
 
 # ---------------------------------------------------------------------------
-# Scenario A: traditional ranking (local, no Drachma)
+# Scenario A tools
 # ---------------------------------------------------------------------------
 
 def _load_mock() -> dict[str, Any]:
@@ -61,8 +78,7 @@ def _load_mock() -> dict[str, Any]:
         return json.load(f)
 
 
-def traditional_search(max_price_usd: float, blade_length_min: int, blade_length_max: int, limit: int = 5) -> dict[str, Any]:
-    """Return top candidates ranked the way a typical AI-mediated search would: popularity + authority."""
+def traditional_search(max_price_usd: float, blade_length_min: int = 0, blade_length_max: int = 10_000, limit: int = 5) -> dict[str, Any]:
     data = _load_mock()
     results = []
     for p in data["products"]:
@@ -71,7 +87,6 @@ def traditional_search(max_price_usd: float, blade_length_min: int, blade_length
         bl = p["specs"].get("blade_length_mm", 0)
         if not (blade_length_min <= bl <= blade_length_max):
             continue
-        # Traditional signal: SEO authority + review volume + ad spend.
         score = (
             0.40 * p["seo_authority"]
             + 0.40 * min(p["review_volume"] / 15000, 1.0)
@@ -92,21 +107,21 @@ def traditional_search(max_price_usd: float, blade_length_min: int, blade_length
 
 
 def get_product_reviews_summary(product_id: str) -> dict[str, Any]:
-    """Simulated aggregate review data — the only evidence a traditional AI has access to."""
     data = _load_mock()
     product = next((p for p in data["products"] if p["product_id"] == product_id), None)
     if not product:
         return {"error": f"unknown product_id {product_id}"}
-    # Fake an aggregate that tracks popularity, not quality.
-    stars = 3.8 + 0.6 * product["seo_authority"] + 0.2 * (product["ad_spend_tier"] / 5)
+    popularity = 0.5 * product["seo_authority"] + 0.5 * min(product["review_volume"] / 15000, 1.0)
+    noise = (hash(product_id) % 1000 / 1000 - 0.5) * 0.7
+    stars = max(3.4, min(4.9, 3.9 + 0.5 * popularity + noise))
     return {
         "product_id": product_id,
-        "average_stars": round(min(stars, 5.0), 2),
+        "average_stars": round(stars, 2),
         "review_count": product["review_volume"],
         "sample_headlines": [
             "Great knife, recommend!",
             "Came fast, feels solid.",
-            "My wife loves it.",
+            "Sharper than expected.",
         ],
     }
 
@@ -116,7 +131,7 @@ TRADITIONAL_TOOLS = [
         "type": "function",
         "function": {
             "name": "traditional_search",
-            "description": "Search products using mainstream popularity signals (SEO authority, review volume, ad spend).",
+            "description": "Search products using mainstream popularity signals (SEO, reviews, ad spend).",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -125,7 +140,7 @@ TRADITIONAL_TOOLS = [
                     "blade_length_max": {"type": "integer"},
                     "limit": {"type": "integer", "default": 5},
                 },
-                "required": ["max_price_usd", "blade_length_min", "blade_length_max"],
+                "required": ["max_price_usd"],
             },
         },
     },
@@ -145,11 +160,11 @@ TRADITIONAL_TOOLS = [
 
 
 # ---------------------------------------------------------------------------
-# Scenario B: Drachma
+# Scenario B tools
 # ---------------------------------------------------------------------------
 
-def _drachma_call(method: str, path: str, **kwargs: Any) -> dict[str, Any]:
-    r = requests.request(method, f"{DRACHMA_URL}{path}", timeout=10, **kwargs)
+def _drachma(method: str, path: str, **kwargs: Any) -> dict[str, Any]:
+    r = requests.request(method, f"{DRACHMA_URL}{path}", timeout=15, **kwargs)
     if r.status_code >= 400:
         try:
             detail = r.json().get("detail", r.text)
@@ -160,20 +175,11 @@ def _drachma_call(method: str, path: str, **kwargs: Any) -> dict[str, Any]:
 
 
 def drachma_feed_query(category: str, preference_profile: dict[str, Any], limit: int = 5) -> dict[str, Any]:
-    return _drachma_call("POST", "/feed/query", json={"category": category, "preference_profile": preference_profile, "limit": limit})
+    return _drachma("POST", "/feed/query", json={"category": category, "preference_profile": preference_profile, "limit": limit})
 
 
 def drachma_get_attestations(product_id: str) -> dict[str, Any]:
-    return _drachma_call("GET", f"/attestations/{product_id}")
-
-
-def drachma_submit_outcome(product_id: str, user_profile_tag: str, event: str, satisfaction: float) -> dict[str, Any]:
-    return _drachma_call("POST", "/outcomes", json={
-        "product_id": product_id,
-        "user_profile_tag": user_profile_tag,
-        "event": event,
-        "satisfaction": satisfaction,
-    })
+    return _drachma("GET", f"/attestations/{product_id}")
 
 
 DRACHMA_TOOLS = [
@@ -182,9 +188,10 @@ DRACHMA_TOOLS = [
         "function": {
             "name": "drachma_feed_query",
             "description": (
-                "Rank products in a category against a user preference profile using the Drachma signal: "
-                "creator attestations, post-purchase outcomes, niche fit, and value. Use this first. "
-                "Supported categories: 'chef_knife'."
+                "Rank products against a user preference profile using Drachma's four-dimension "
+                "composite: verified quality, expert coverage, outcome alignment, value. Pass "
+                "the full preference_profile including weights, constraints, and composite_weights. "
+                "Supported category: 'chef_knife'."
             ),
             "parameters": {
                 "type": "object",
@@ -195,7 +202,9 @@ DRACHMA_TOOLS = [
                         "properties": {
                             "weights": {"type": "object", "additionalProperties": {"type": "number"}},
                             "constraints": {"type": "object"},
+                            "composite_weights": {"type": "object", "additionalProperties": {"type": "number"}},
                         },
+                        "required": ["weights"],
                     },
                     "limit": {"type": "integer", "default": 5},
                 },
@@ -207,28 +216,11 @@ DRACHMA_TOOLS = [
         "type": "function",
         "function": {
             "name": "drachma_get_attestations",
-            "description": "Fetch all verified creator attestations for a product — the underlying evidence for a candidate.",
+            "description": "Fetch all verified creator attestations for a product (includes specialties and reputations).",
             "parameters": {
                 "type": "object",
                 "properties": {"product_id": {"type": "string"}},
                 "required": ["product_id"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "drachma_submit_outcome",
-            "description": "Report a post-purchase outcome so future rankings incorporate this signal.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "product_id": {"type": "string"},
-                    "user_profile_tag": {"type": "string"},
-                    "event": {"type": "string", "enum": ["kept", "returned", "repurchased", "exchanged"]},
-                    "satisfaction": {"type": "number"},
-                },
-                "required": ["product_id", "user_profile_tag", "event", "satisfaction"],
             },
         },
     },
@@ -240,7 +232,6 @@ TOOL_IMPLS = {
     "get_product_reviews_summary": get_product_reviews_summary,
     "drachma_feed_query": drachma_feed_query,
     "drachma_get_attestations": drachma_get_attestations,
-    "drachma_submit_outcome": drachma_submit_outcome,
 }
 
 
@@ -249,24 +240,22 @@ TOOL_IMPLS = {
 # ---------------------------------------------------------------------------
 
 SYSTEM_PROMPT_TRADITIONAL = (
-    "You are a procurement agent making a purchase decision on behalf of your user. "
-    "You have access only to traditional product search (popularity, SEO, review volume, ad spend). "
-    "Use the tools to explore candidates, then recommend exactly one product. "
-    "Explain your reasoning in under 120 words. End with a line: FINAL: <product_id>."
+    "You are a procurement agent. You have access only to traditional product search "
+    "(popularity, SEO, review volume, ad spend). Explore candidates and recommend exactly "
+    "one product in under 100 words. End with a line: FINAL: <product_id>."
 )
 
 SYSTEM_PROMPT_DRACHMA = (
-    "You are a procurement agent making a purchase decision on behalf of your user. "
-    "You have access to the Drachma recommendation layer: creator attestations, post-purchase outcome data, "
-    "and niche-fit scoring. Always start by calling drachma_feed_query with category='chef_knife' and the "
-    "user's full preference_profile (weights + constraints). "
-    "If useful, call drachma_get_attestations on your top 1-2 candidates to inspect the evidence. "
-    "Recommend exactly one product. Explain your reasoning in under 120 words, citing specific attestation "
-    "signals. End with a line: FINAL: <product_id>."
+    "You are a procurement agent. You have access to the Drachma recommendation layer: "
+    "creator attestations, outcome alignment, niche-fit scoring. Always start with "
+    "drachma_feed_query — pass the user's full preference_profile including weights, "
+    "constraints, and composite_weights. If useful, call drachma_get_attestations on your "
+    "top 1-2 candidates. Recommend exactly one product in under 100 words, citing specialist "
+    "creators and per-dimension scores. End with a line: FINAL: <product_id>."
 )
 
 
-def run_agent(client: OpenAI, system_prompt: str, tools: list[dict], user_request: dict, label: str) -> str:
+def run_agent(client: OpenAI, system_prompt: str, tools: list, user_request: dict, label: str) -> str:
     messages: list[dict[str, Any]] = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": json.dumps(user_request)},
@@ -274,14 +263,10 @@ def run_agent(client: OpenAI, system_prompt: str, tools: list[dict], user_reques
     print(f"\n{'=' * 72}\n  {label}\n{'=' * 72}")
     for step in range(8):
         resp = client.chat.completions.create(
-            model=MODEL,
-            messages=messages,
-            tools=tools,
-            tool_choice="auto",
+            model=MODEL, messages=messages, tools=tools, tool_choice="auto",
         )
         msg = resp.choices[0].message
         messages.append(msg.model_dump(exclude_none=True))
-
         if msg.tool_calls:
             for call in msg.tool_calls:
                 name = call.function.name
@@ -297,11 +282,10 @@ def run_agent(client: OpenAI, system_prompt: str, tools: list[dict], user_reques
                     "content": json.dumps(result)[:6000],
                 })
             continue
-
         content = msg.content or ""
         print(f"\n[recommendation]\n{content}\n")
         return content
-    print("[warn] agent exceeded step budget")
+    print("[warn] step budget exhausted")
     return ""
 
 
@@ -310,12 +294,9 @@ def _short(args: dict[str, Any]) -> str:
     return s if len(s) < 160 else s[:157] + "..."
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
-
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--profile", choices=["A", "B", "C"], default="A")
     parser.add_argument("--scenario", choices=["a", "b", "both"], default="both")
     args = parser.parse_args()
 
@@ -323,12 +304,15 @@ def main() -> int:
         print("error: set OPENAI_API_KEY", file=sys.stderr)
         return 1
 
-    client = OpenAI()
+    profile = PROFILES[args.profile]
+    user_request = {"summary": profile["summary"], "preference_profile": profile["preference_profile"]}
+    print(f"profile {args.profile}: {profile['label']}")
 
+    client = OpenAI()
     if args.scenario in ("a", "both"):
-        run_agent(client, SYSTEM_PROMPT_TRADITIONAL, TRADITIONAL_TOOLS, USER_REQUEST, "SCENARIO A  —  traditional ranking")
+        run_agent(client, SYSTEM_PROMPT_TRADITIONAL, TRADITIONAL_TOOLS, user_request, "SCENARIO A  —  traditional ranking")
     if args.scenario in ("b", "both"):
-        run_agent(client, SYSTEM_PROMPT_DRACHMA, DRACHMA_TOOLS, USER_REQUEST, "SCENARIO B  —  Drachma feed")
+        run_agent(client, SYSTEM_PROMPT_DRACHMA, DRACHMA_TOOLS, user_request, "SCENARIO B  —  Drachma feed")
     return 0
 
 
