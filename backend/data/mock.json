@@ -1,0 +1,614 @@
+{
+  "category": "chef_knife",
+  "rubric": {
+    "version": "chef_knife.v2",
+    "attributes": {
+      "edge_retention": {
+        "description": "How long the blade holds a usable edge under a standardized cut-test protocol.",
+        "scale": "0-10",
+        "methodology": "200 slices of 1-inch sisal rope, measured against reference BESS score drift."
+      },
+      "steel_quality": {
+        "description": "Composite of carbon content, hardness (HRC), grain structure, and heat treatment quality.",
+        "scale": "0-10",
+        "methodology": "Material spec + Rockwell test + microscopy where available."
+      },
+      "balance": {
+        "description": "Weight distribution and pinch-point feel during extended use.",
+        "scale": "0-10",
+        "methodology": "Pivot-point measurement + 30-minute prep session rating."
+      },
+      "handle_ergonomics": {
+        "description": "Comfort and control over a fatigue protocol.",
+        "scale": "0-10",
+        "methodology": "45-minute continuous mince + rock-chop session, graded against blister/fatigue checklist."
+      },
+      "out_of_box_sharpness": {
+        "description": "Factory edge quality before any honing.",
+        "scale": "0-10",
+        "methodology": "Single-trial BESS test on unopened unit."
+      },
+      "fit_and_finish": {
+        "description": "Quality of grinds, handle-to-bolster transitions, spine rounding, overall build.",
+        "scale": "0-10",
+        "methodology": "10x loupe inspection + 20-point checklist."
+      },
+      "corrosion_resistance": {
+        "description": "Resistance to patina/rust under realistic home-kitchen humidity.",
+        "scale": "0-10",
+        "methodology": "14-day humidity cabinet exposure after controlled acidic-food contact."
+      }
+    }
+  },
+  "products": [
+    {
+      "product_id": "prod_nakamura_aogami_gyuto_210",
+      "name": "Nakamura Hamono Aogami #2 Gyuto 210mm",
+      "brand": "Nakamura Hamono",
+      "brand_type": "niche_maker",
+      "origin": "Okayama, Japan",
+      "price_usd": 320,
+      "review_volume": 47,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.08,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "Aogami #2 / stainless clad",
+        "hrc": 63,
+        "handle_material": "ho wood / water buffalo ferrule",
+        "weight_g": 178,
+        "profile": "gyuto",
+        "grind": "asymmetric 70/30"
+      },
+      "description": "Third-generation bladesmith forge. Single-smith production, ~18 knives per month."
+    },
+    {
+      "product_id": "prod_takamura_r2_migaki_210",
+      "name": "Takamura R2 Migaki Gyuto 210mm",
+      "brand": "Takamura Hamono",
+      "brand_type": "niche_maker",
+      "origin": "Echizen, Japan",
+      "price_usd": 245,
+      "review_volume": 112,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.14,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "SG2 / R2 powdered",
+        "hrc": 63,
+        "handle_material": "pakkawood",
+        "weight_g": 165,
+        "profile": "gyuto",
+        "grind": "50/50 thin"
+      },
+      "description": "Known for extreme thinness and laser-like geometry."
+    },
+    {
+      "product_id": "prod_yoshikane_skd_210",
+      "name": "Yoshikane SKD Nashiji Gyuto 210mm",
+      "brand": "Yoshikane",
+      "brand_type": "niche_maker",
+      "origin": "Sanjo, Japan",
+      "price_usd": 285,
+      "review_volume": 89,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.11,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "SKD tool steel / stainless clad",
+        "hrc": 62,
+        "handle_material": "walnut octagonal",
+        "weight_g": 182,
+        "profile": "gyuto",
+        "grind": "convex"
+      },
+      "description": "Workshop forge, semi-stainless with high edge retention."
+    },
+    {
+      "product_id": "prod_konosuke_fm_210",
+      "name": "Konosuke Fujiyama White #2 Gyuto 210mm",
+      "brand": "Konosuke",
+      "brand_type": "niche_maker",
+      "origin": "Sakai, Japan",
+      "price_usd": 410,
+      "review_volume": 64,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.12,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "Shirogami #2",
+        "hrc": 62,
+        "handle_material": "ho wood magnolia",
+        "weight_g": 152,
+        "profile": "gyuto",
+        "grind": "asymmetric 80/20"
+      },
+      "description": "Sakai-forged, Tosa-sharpened. Small-batch, long lead times."
+    },
+    {
+      "product_id": "prod_mazaki_kuro_gyuto_210",
+      "name": "Mazaki Kurouchi White #2 Gyuto 210mm",
+      "brand": "Mazaki Hamono",
+      "brand_type": "niche_maker",
+      "origin": "Takefu, Japan",
+      "price_usd": 260,
+      "review_volume": 38,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.06,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "Shirogami #2 / iron clad",
+        "hrc": 62,
+        "handle_material": "chestnut",
+        "weight_g": 195,
+        "profile": "gyuto",
+        "grind": "convex reactive"
+      },
+      "description": "Reactive carbon, known for aggressive geometry."
+    },
+    {
+      "product_id": "prod_wusthof_classic_8",
+      "name": "Wusthof Classic 8-inch Chef's Knife",
+      "brand": "Wusthof",
+      "brand_type": "global_incumbent",
+      "origin": "Solingen, Germany",
+      "price_usd": 170,
+      "review_volume": 14203,
+      "ad_spend_tier": 5,
+      "seo_authority": 0.94,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "X50CrMoV15",
+        "hrc": 58,
+        "handle_material": "POM synthetic",
+        "weight_g": 257,
+        "profile": "german_chef",
+        "grind": "50/50 full bolster"
+      },
+      "description": "Market standard full-tang forged German knife. Ubiquitous."
+    },
+    {
+      "product_id": "prod_henckels_pro_8",
+      "name": "Henckels Professional S 8-inch Chef",
+      "brand": "Henckels",
+      "brand_type": "global_incumbent",
+      "origin": "Solingen, Germany",
+      "price_usd": 155,
+      "review_volume": 9870,
+      "ad_spend_tier": 5,
+      "seo_authority": 0.92,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "X50CrMoV15",
+        "hrc": 57,
+        "handle_material": "POM synthetic",
+        "weight_g": 265,
+        "profile": "german_chef",
+        "grind": "50/50 full bolster"
+      },
+      "description": "Direct Wusthof competitor. Heavy, durable, soft steel."
+    },
+    {
+      "product_id": "prod_victorinox_fibrox_8",
+      "name": "Victorinox Fibrox Pro 8-inch Chef",
+      "brand": "Victorinox",
+      "brand_type": "global_incumbent",
+      "origin": "Ibach, Switzerland",
+      "price_usd": 52,
+      "review_volume": 22140,
+      "ad_spend_tier": 4,
+      "seo_authority": 0.96,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "X50CrMoV15 stamped",
+        "hrc": 56,
+        "handle_material": "fibrox TPE",
+        "weight_g": 178,
+        "profile": "german_chef",
+        "grind": "stamped 50/50"
+      },
+      "description": "Budget workhorse. Stamped blade, very soft steel, legendary reputation for value."
+    },
+    {
+      "product_id": "prod_global_g2",
+      "name": "Global G-2 Classic 8-inch Chef",
+      "brand": "Global",
+      "brand_type": "global_incumbent",
+      "origin": "Niigata, Japan",
+      "price_usd": 135,
+      "review_volume": 7432,
+      "ad_spend_tier": 4,
+      "seo_authority": 0.89,
+      "specs": {
+        "blade_length_mm": 200,
+        "steel_type": "CROMOVA 18",
+        "hrc": 58,
+        "handle_material": "hollow stainless",
+        "weight_g": 170,
+        "profile": "gyuto_western",
+        "grind": "50/50"
+      },
+      "description": "Stainless-handled, dimpled grip. Cult-ish status despite soft steel."
+    },
+    {
+      "product_id": "prod_shun_classic_8",
+      "name": "Shun Classic 8-inch Chef",
+      "brand": "Shun",
+      "brand_type": "global_incumbent",
+      "origin": "Seki, Japan",
+      "price_usd": 185,
+      "review_volume": 8901,
+      "ad_spend_tier": 5,
+      "seo_authority": 0.93,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "VG-MAX / 34-layer Damascus clad",
+        "hrc": 61,
+        "handle_material": "pakkawood D-shaped",
+        "weight_g": 210,
+        "profile": "gyuto_western",
+        "grind": "asymmetric 70/30"
+      },
+      "description": "Kai Corp flagship. Damascus cladding is cosmetic; core is VG-MAX."
+    },
+    {
+      "product_id": "prod_misono_uX10_210",
+      "name": "Misono UX10 Gyuto 210mm",
+      "brand": "Misono",
+      "brand_type": "established_mid",
+      "origin": "Seki, Japan",
+      "price_usd": 245,
+      "review_volume": 1803,
+      "ad_spend_tier": 2,
+      "seo_authority": 0.61,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "Swedish stainless",
+        "hrc": 60,
+        "handle_material": "pakkawood western",
+        "weight_g": 198,
+        "profile": "gyuto_western",
+        "grind": "50/50"
+      },
+      "description": "Long-standing professional chef favorite. Stainless, forgiving."
+    },
+    {
+      "product_id": "prod_tojiro_dp_210",
+      "name": "Tojiro DP VG10 Gyuto 210mm",
+      "brand": "Tojiro",
+      "brand_type": "established_mid",
+      "origin": "Tsubame-Sanjo, Japan",
+      "price_usd": 85,
+      "review_volume": 6120,
+      "ad_spend_tier": 2,
+      "seo_authority": 0.78,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "VG10 / stainless clad",
+        "hrc": 60,
+        "handle_material": "pakkawood western",
+        "weight_g": 175,
+        "profile": "gyuto_western",
+        "grind": "50/50"
+      },
+      "description": "Entry-level Japanese gyuto, widely recommended as first serious knife."
+    },
+    {
+      "product_id": "prod_misen_chef_8",
+      "name": "Misen Chef's Knife 8-inch",
+      "brand": "Misen",
+      "brand_type": "dtc_startup",
+      "origin": "China (designed US)",
+      "price_usd": 75,
+      "review_volume": 11450,
+      "ad_spend_tier": 4,
+      "seo_authority": 0.82,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "AUS-10",
+        "hrc": 59,
+        "handle_material": "POM sloped",
+        "weight_g": 218,
+        "profile": "hybrid",
+        "grind": "50/50"
+      },
+      "description": "Kickstarter DTC. Heavy marketing, hybrid profile."
+    },
+    {
+      "product_id": "prod_made_in_chef_8",
+      "name": "Made In Chef Knife 8-inch",
+      "brand": "Made In",
+      "brand_type": "dtc_startup",
+      "origin": "Thiers, France",
+      "price_usd": 119,
+      "review_volume": 4732,
+      "ad_spend_tier": 4,
+      "seo_authority": 0.80,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "X50CrMoV15",
+        "hrc": 58,
+        "handle_material": "POM",
+        "weight_g": 232,
+        "profile": "french_chef",
+        "grind": "50/50"
+      },
+      "description": "DTC, French-forged. Marketing-heavy, steel is standard."
+    },
+    {
+      "product_id": "prod_material_almost_chef",
+      "name": "Material The Almost 7.5 Knife",
+      "brand": "Material Kitchen",
+      "brand_type": "dtc_startup",
+      "origin": "Seki, Japan (for Material)",
+      "price_usd": 95,
+      "review_volume": 3201,
+      "ad_spend_tier": 4,
+      "seo_authority": 0.77,
+      "specs": {
+        "blade_length_mm": 190,
+        "steel_type": "Japanese stainless",
+        "hrc": 58,
+        "handle_material": "composite",
+        "weight_g": 170,
+        "profile": "hybrid_short",
+        "grind": "50/50"
+      },
+      "description": "Design-forward DTC. Short length is polarizing."
+    },
+    {
+      "product_id": "prod_mac_mth80",
+      "name": "MAC MTH-80 Professional 8-inch",
+      "brand": "MAC",
+      "brand_type": "established_mid",
+      "origin": "Seki, Japan",
+      "price_usd": 165,
+      "review_volume": 3890,
+      "ad_spend_tier": 2,
+      "seo_authority": 0.74,
+      "specs": {
+        "blade_length_mm": 203,
+        "steel_type": "Japanese molybdenum stainless",
+        "hrc": 60,
+        "handle_material": "pakkawood",
+        "weight_g": 184,
+        "profile": "gyuto_western",
+        "grind": "50/50 thin"
+      },
+      "description": "NYT Wirecutter perennial pick. Thin, nimble, stainless."
+    },
+    {
+      "product_id": "prod_kato_workshop_240",
+      "name": "Yoshiaki Fujiwara Denka Gyuto 240mm",
+      "brand": "Denka no Hoto",
+      "brand_type": "niche_maker",
+      "origin": "Tosa, Japan",
+      "price_usd": 520,
+      "review_volume": 21,
+      "ad_spend_tier": 0,
+      "seo_authority": 0.05,
+      "specs": {
+        "blade_length_mm": 240,
+        "steel_type": "Aogami Super / stainless clad",
+        "hrc": 65,
+        "handle_material": "ebony octagonal",
+        "weight_g": 228,
+        "profile": "gyuto",
+        "grind": "convex"
+      },
+      "description": "Waitlist-only. Notorious edge retention, heavy for gyuto."
+    },
+    {
+      "product_id": "prod_masamoto_ks_gyuto_210",
+      "name": "Masamoto KS Gyuto 210mm",
+      "brand": "Masamoto Sohonten",
+      "brand_type": "established_mid",
+      "origin": "Tsukiji, Japan",
+      "price_usd": 380,
+      "review_volume": 412,
+      "ad_spend_tier": 1,
+      "seo_authority": 0.52,
+      "specs": {
+        "blade_length_mm": 210,
+        "steel_type": "Shirogami #2",
+        "hrc": 62,
+        "handle_material": "ho wood",
+        "weight_g": 168,
+        "profile": "gyuto",
+        "grind": "asymmetric 90/10"
+      },
+      "description": "Tokyo institution. Favored by professional Japanese kitchens."
+    }
+  ],
+  "creators": [
+    { "creator_id": "cr_nakamura_k", "name": "Kenji Nakamura",    "specialty": "japanese_knives",  "reputation": 0.93, "attestations_count": 84, "verified_since": "2024-01-15" },
+    { "creator_id": "cr_chen_s",     "name": "Sarah Chen",         "specialty": "kitchen_tools",    "reputation": 0.89, "attestations_count": 112,"verified_since": "2023-11-02" },
+    { "creator_id": "cr_olsson_m",   "name": "Marcus Olsson",      "specialty": "carbon_steel",     "reputation": 0.91, "attestations_count": 67, "verified_since": "2024-03-20" },
+    { "creator_id": "cr_tanaka_h",   "name": "Hiro Tanaka",        "specialty": "sakai_forged",     "reputation": 0.95, "attestations_count": 58, "verified_since": "2023-08-12" },
+    { "creator_id": "cr_rivera_a",   "name": "Ana Rivera",         "specialty": "home_cooking",     "reputation": 0.72, "attestations_count": 140,"verified_since": "2023-06-01" },
+    { "creator_id": "cr_park_j",     "name": "Jae Park",           "specialty": "pro_kitchen",      "reputation": 0.86, "attestations_count": 94, "verified_since": "2024-02-08" },
+    { "creator_id": "cr_dubois_l",   "name": "Léa Dubois",         "specialty": "french_cuisine",   "reputation": 0.81, "attestations_count": 78, "verified_since": "2024-04-11" },
+    { "creator_id": "cr_weber_t",    "name": "Tomas Weber",        "specialty": "german_steel",     "reputation": 0.77, "attestations_count": 103,"verified_since": "2023-09-19" },
+    { "creator_id": "cr_morales_d",  "name": "Diego Morales",      "specialty": "butchery",         "reputation": 0.84, "attestations_count": 71, "verified_since": "2024-01-30" },
+    { "creator_id": "cr_singh_p",    "name": "Priya Singh",        "specialty": "knife_geometry",   "reputation": 0.88, "attestations_count": 62, "verified_since": "2024-05-14" },
+    { "creator_id": "cr_oconnell_s", "name": "Sean O'Connell",     "specialty": "edge_retention",   "reputation": 0.90, "attestations_count": 55, "verified_since": "2024-06-22" },
+    { "creator_id": "cr_zhang_w",    "name": "Wei Zhang",          "specialty": "metallurgy",       "reputation": 0.87, "attestations_count": 49, "verified_since": "2024-07-05" },
+    { "creator_id": "cr_hassan_n",   "name": "Nadia Hassan",       "specialty": "home_cooking",     "reputation": 0.68, "attestations_count": 155,"verified_since": "2023-05-10" },
+    { "creator_id": "cr_bauer_k",    "name": "Klaus Bauer",        "specialty": "restaurant_prep",  "reputation": 0.79, "attestations_count": 88, "verified_since": "2023-10-04" },
+    { "creator_id": "cr_yamamoto_r", "name": "Rin Yamamoto",       "specialty": "traditional_japanese","reputation": 0.92,"attestations_count": 41,"verified_since": "2024-08-01" },
+    { "creator_id": "cr_fox_b",      "name": "Ben Fox",            "specialty": "budget_gear",      "reputation": 0.58, "attestations_count": 198,"verified_since": "2023-03-15" }
+  ],
+  "attestations": [
+    { "attestation_id": "att_0001", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_nakamura_k", "testing_duration_days": 28, "scores": { "edge_retention": 9.4, "steel_quality": 9.5, "balance": 8.6, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.1, "fit_and_finish": 9.3, "corrosion_resistance": 5.1 }, "methodology_notes": "Aogami #2 at 63 HRC responds exactly as expected. Edge drifted from BESS 120 to 180 over 200 rope cuts.", "signed_at": "2026-01-08T12:00:00Z" },
+    { "attestation_id": "att_0002", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_tanaka_h", "testing_duration_days": 35, "scores": { "edge_retention": 9.5, "steel_quality": 9.4, "balance": 8.8, "handle_ergonomics": 8.0, "out_of_box_sharpness": 9.3, "fit_and_finish": 9.4, "corrosion_resistance": 5.0 }, "methodology_notes": "Best-in-class heat treatment. Wa handle transition is clean.", "signed_at": "2026-01-15T12:00:00Z" },
+    { "attestation_id": "att_0003", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_olsson_m", "testing_duration_days": 22, "scores": { "edge_retention": 9.3, "steel_quality": 9.4, "balance": 8.5, "handle_ergonomics": 8.3, "out_of_box_sharpness": 8.9, "fit_and_finish": 9.1, "corrosion_resistance": 4.8 }, "methodology_notes": "Carbon patinates fast — expected. Edge holds through tomatoes-to-squash workload.", "signed_at": "2026-01-22T12:00:00Z" },
+    { "attestation_id": "att_0004", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_singh_p", "testing_duration_days": 18, "scores": { "edge_retention": 9.2, "steel_quality": 9.3, "balance": 9.0, "handle_ergonomics": 8.4, "out_of_box_sharpness": 9.0, "fit_and_finish": 9.2, "corrosion_resistance": 5.2 }, "methodology_notes": "Geometry is thin behind the edge without being fragile.", "signed_at": "2026-01-29T12:00:00Z" },
+    { "attestation_id": "att_0005", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_oconnell_s", "testing_duration_days": 42, "scores": { "edge_retention": 9.6, "steel_quality": 9.5, "balance": 8.7, "handle_ergonomics": 8.1, "out_of_box_sharpness": 9.2, "fit_and_finish": 9.3, "corrosion_resistance": 4.9 }, "methodology_notes": "42-day long-haul test. Only needed stropping twice.", "signed_at": "2026-02-05T12:00:00Z" },
+    { "attestation_id": "att_0006", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_zhang_w", "testing_duration_days": 20, "scores": { "edge_retention": 9.3, "steel_quality": 9.6, "balance": 8.5, "handle_ergonomics": 8.0, "out_of_box_sharpness": 9.0, "fit_and_finish": 9.2, "corrosion_resistance": 4.7 }, "methodology_notes": "Microscopy confirms fine grain. Proper quench.", "signed_at": "2026-02-12T12:00:00Z" },
+    { "attestation_id": "att_0007", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_yamamoto_r", "testing_duration_days": 30, "scores": { "edge_retention": 9.4, "steel_quality": 9.4, "balance": 8.9, "handle_ergonomics": 8.5, "out_of_box_sharpness": 9.2, "fit_and_finish": 9.4, "corrosion_resistance": 5.0 }, "methodology_notes": "Traditional form, modern execution. Grade-A.", "signed_at": "2026-02-19T12:00:00Z" },
+    { "attestation_id": "att_0008", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_park_j", "testing_duration_days": 14, "scores": { "edge_retention": 9.1, "steel_quality": 9.3, "balance": 8.4, "handle_ergonomics": 8.0, "out_of_box_sharpness": 8.8, "fit_and_finish": 9.0, "corrosion_resistance": 4.8 }, "methodology_notes": "Service-kitchen pace for two weeks. Held up.", "signed_at": "2026-02-26T12:00:00Z" },
+    { "attestation_id": "att_0009", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_chen_s", "testing_duration_days": 21, "scores": { "edge_retention": 9.2, "steel_quality": 9.3, "balance": 8.6, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.1, "fit_and_finish": 9.2, "corrosion_resistance": 4.9 }, "methodology_notes": "Consistent with previous Nakamura work.", "signed_at": "2026-03-05T12:00:00Z" },
+    { "attestation_id": "att_0010", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_morales_d", "testing_duration_days": 16, "scores": { "edge_retention": 9.0, "steel_quality": 9.2, "balance": 8.3, "handle_ergonomics": 7.9, "out_of_box_sharpness": 8.8, "fit_and_finish": 9.0, "corrosion_resistance": 4.6 }, "methodology_notes": "Broke down a shoulder. Edge survived bone contact (user error).", "signed_at": "2026-03-12T12:00:00Z" },
+    { "attestation_id": "att_0011", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_dubois_l", "testing_duration_days": 19, "scores": { "edge_retention": 9.3, "steel_quality": 9.3, "balance": 8.7, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.0, "fit_and_finish": 9.2, "corrosion_resistance": 5.0 }, "methodology_notes": "French prep workload. Excellent on vegetable brunoise.", "signed_at": "2026-03-19T12:00:00Z" },
+    { "attestation_id": "att_0012", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_rivera_a", "testing_duration_days": 12, "scores": { "edge_retention": 8.8, "steel_quality": 9.0, "balance": 8.4, "handle_ergonomics": 7.6, "out_of_box_sharpness": 8.7, "fit_and_finish": 8.9, "corrosion_resistance": 4.5 }, "methodology_notes": "Wa handle was unfamiliar but adjusted in a week.", "signed_at": "2026-03-26T12:00:00Z" },
+    { "attestation_id": "att_0013", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_weber_t", "testing_duration_days": 15, "scores": { "edge_retention": 9.1, "steel_quality": 9.2, "balance": 8.4, "handle_ergonomics": 7.8, "out_of_box_sharpness": 8.9, "fit_and_finish": 9.0, "corrosion_resistance": 4.6 }, "methodology_notes": "Coming from German knives, geometry was a revelation.", "signed_at": "2026-04-02T12:00:00Z" },
+    { "attestation_id": "att_0014", "product_id": "prod_nakamura_aogami_gyuto_210", "creator_id": "cr_bauer_k", "testing_duration_days": 17, "scores": { "edge_retention": 9.2, "steel_quality": 9.3, "balance": 8.5, "handle_ergonomics": 8.0, "out_of_box_sharpness": 9.0, "fit_and_finish": 9.1, "corrosion_resistance": 4.8 }, "methodology_notes": "Restaurant-prep pace for 17 days. Reliable.", "signed_at": "2026-04-09T12:00:00Z" },
+
+    { "attestation_id": "att_0015", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_nakamura_k", "testing_duration_days": 20, "scores": { "edge_retention": 8.8, "steel_quality": 8.9, "balance": 9.1, "handle_ergonomics": 8.4, "out_of_box_sharpness": 9.4, "fit_and_finish": 8.8, "corrosion_resistance": 8.5 }, "methodology_notes": "Laser-thin. Out-of-box sharpness is elite.", "signed_at": "2026-01-10T12:00:00Z" },
+    { "attestation_id": "att_0016", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_singh_p", "testing_duration_days": 18, "scores": { "edge_retention": 8.9, "steel_quality": 9.0, "balance": 9.0, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.5, "fit_and_finish": 8.9, "corrosion_resistance": 8.6 }, "methodology_notes": "R2 powdered steel at 63 HRC. Thin geometry feels fragile on hard squash.", "signed_at": "2026-01-17T12:00:00Z" },
+    { "attestation_id": "att_0017", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_chen_s", "testing_duration_days": 22, "scores": { "edge_retention": 8.7, "steel_quality": 8.9, "balance": 9.2, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.3, "fit_and_finish": 8.7, "corrosion_resistance": 8.5 }, "methodology_notes": "Stainless convenience, great geometry.", "signed_at": "2026-01-24T12:00:00Z" },
+    { "attestation_id": "att_0018", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_park_j", "testing_duration_days": 16, "scores": { "edge_retention": 8.8, "steel_quality": 8.8, "balance": 9.0, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.4, "fit_and_finish": 8.8, "corrosion_resistance": 8.6 }, "methodology_notes": "Good service knife if you respect the edge.", "signed_at": "2026-01-31T12:00:00Z" },
+    { "attestation_id": "att_0019", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_oconnell_s", "testing_duration_days": 25, "scores": { "edge_retention": 8.9, "steel_quality": 9.1, "balance": 9.0, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.3, "fit_and_finish": 8.8, "corrosion_resistance": 8.5 }, "methodology_notes": "R2 holds long. Chips if you abuse it on bone.", "signed_at": "2026-02-07T12:00:00Z" },
+    { "attestation_id": "att_0020", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_tanaka_h", "testing_duration_days": 21, "scores": { "edge_retention": 8.8, "steel_quality": 9.0, "balance": 9.1, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.4, "fit_and_finish": 8.9, "corrosion_resistance": 8.6 }, "methodology_notes": "Excellent Echizen geometry.", "signed_at": "2026-02-14T12:00:00Z" },
+    { "attestation_id": "att_0021", "product_id": "prod_takamura_r2_migaki_210", "creator_id": "cr_rivera_a", "testing_duration_days": 14, "scores": { "edge_retention": 8.5, "steel_quality": 8.7, "balance": 8.9, "handle_ergonomics": 8.0, "out_of_box_sharpness": 9.1, "fit_and_finish": 8.6, "corrosion_resistance": 8.4 }, "methodology_notes": "Very thin; be careful with hard vegetables.", "signed_at": "2026-02-21T12:00:00Z" },
+
+    { "attestation_id": "att_0022", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_olsson_m", "testing_duration_days": 28, "scores": { "edge_retention": 9.0, "steel_quality": 9.1, "balance": 8.6, "handle_ergonomics": 8.4, "out_of_box_sharpness": 8.7, "fit_and_finish": 8.9, "corrosion_resistance": 7.8 }, "methodology_notes": "SKD tool steel semi-stainless. Sweet spot.", "signed_at": "2026-01-11T12:00:00Z" },
+    { "attestation_id": "att_0023", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_oconnell_s", "testing_duration_days": 32, "scores": { "edge_retention": 9.2, "steel_quality": 9.2, "balance": 8.5, "handle_ergonomics": 8.3, "out_of_box_sharpness": 8.8, "fit_and_finish": 9.0, "corrosion_resistance": 7.9 }, "methodology_notes": "Holds edge longer than Aogami in this sample.", "signed_at": "2026-01-18T12:00:00Z" },
+    { "attestation_id": "att_0024", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_zhang_w", "testing_duration_days": 20, "scores": { "edge_retention": 9.0, "steel_quality": 9.2, "balance": 8.5, "handle_ergonomics": 8.3, "out_of_box_sharpness": 8.7, "fit_and_finish": 8.9, "corrosion_resistance": 7.8 }, "methodology_notes": "Tool steel with excellent heat treat.", "signed_at": "2026-01-25T12:00:00Z" },
+    { "attestation_id": "att_0025", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_singh_p", "testing_duration_days": 18, "scores": { "edge_retention": 8.9, "steel_quality": 9.0, "balance": 8.6, "handle_ergonomics": 8.4, "out_of_box_sharpness": 8.7, "fit_and_finish": 8.9, "corrosion_resistance": 7.7 }, "methodology_notes": "Convex grind feels great.", "signed_at": "2026-02-01T12:00:00Z" },
+    { "attestation_id": "att_0026", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_park_j", "testing_duration_days": 22, "scores": { "edge_retention": 9.1, "steel_quality": 9.1, "balance": 8.5, "handle_ergonomics": 8.3, "out_of_box_sharpness": 8.8, "fit_and_finish": 8.9, "corrosion_resistance": 7.8 }, "methodology_notes": "Workhorse. Near-zero maintenance vs full carbon.", "signed_at": "2026-02-08T12:00:00Z" },
+    { "attestation_id": "att_0027", "product_id": "prod_yoshikane_skd_210", "creator_id": "cr_morales_d", "testing_duration_days": 19, "scores": { "edge_retention": 8.9, "steel_quality": 9.0, "balance": 8.4, "handle_ergonomics": 8.2, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.8, "corrosion_resistance": 7.7 }, "methodology_notes": "Took through a protein-heavy week.", "signed_at": "2026-02-15T12:00:00Z" },
+
+    { "attestation_id": "att_0028", "product_id": "prod_konosuke_fm_210", "creator_id": "cr_tanaka_h", "testing_duration_days": 30, "scores": { "edge_retention": 9.3, "steel_quality": 9.4, "balance": 9.0, "handle_ergonomics": 8.4, "out_of_box_sharpness": 9.3, "fit_and_finish": 9.5, "corrosion_resistance": 4.8 }, "methodology_notes": "Shirogami #2 done right. Light in hand.", "signed_at": "2026-01-12T12:00:00Z" },
+    { "attestation_id": "att_0029", "product_id": "prod_konosuke_fm_210", "creator_id": "cr_yamamoto_r", "testing_duration_days": 24, "scores": { "edge_retention": 9.2, "steel_quality": 9.3, "balance": 9.1, "handle_ergonomics": 8.5, "out_of_box_sharpness": 9.2, "fit_and_finish": 9.4, "corrosion_resistance": 4.9 }, "methodology_notes": "Sakai forge quality is visible.", "signed_at": "2026-01-19T12:00:00Z" },
+    { "attestation_id": "att_0030", "product_id": "prod_konosuke_fm_210", "creator_id": "cr_nakamura_k", "testing_duration_days": 26, "scores": { "edge_retention": 9.2, "steel_quality": 9.3, "balance": 9.0, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.2, "fit_and_finish": 9.4, "corrosion_resistance": 4.8 }, "methodology_notes": "Competes with Nakamura on finish, not on edge retention.", "signed_at": "2026-01-26T12:00:00Z" },
+    { "attestation_id": "att_0031", "product_id": "prod_konosuke_fm_210", "creator_id": "cr_olsson_m", "testing_duration_days": 20, "scores": { "edge_retention": 9.1, "steel_quality": 9.2, "balance": 8.9, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.1, "fit_and_finish": 9.3, "corrosion_resistance": 4.7 }, "methodology_notes": "Beautiful knife; premium price.", "signed_at": "2026-02-02T12:00:00Z" },
+    { "attestation_id": "att_0032", "product_id": "prod_konosuke_fm_210", "creator_id": "cr_dubois_l", "testing_duration_days": 18, "scores": { "edge_retention": 9.0, "steel_quality": 9.1, "balance": 9.0, "handle_ergonomics": 8.4, "out_of_box_sharpness": 9.1, "fit_and_finish": 9.3, "corrosion_resistance": 4.8 }, "methodology_notes": "Elegant. Not a first carbon knife.", "signed_at": "2026-02-09T12:00:00Z" },
+
+    { "attestation_id": "att_0033", "product_id": "prod_mazaki_kuro_gyuto_210", "creator_id": "cr_olsson_m", "testing_duration_days": 24, "scores": { "edge_retention": 9.0, "steel_quality": 9.1, "balance": 8.2, "handle_ergonomics": 7.8, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.4, "corrosion_resistance": 3.8 }, "methodology_notes": "Very reactive, aggressive convex. Purist pick.", "signed_at": "2026-01-13T12:00:00Z" },
+    { "attestation_id": "att_0034", "product_id": "prod_mazaki_kuro_gyuto_210", "creator_id": "cr_nakamura_k", "testing_duration_days": 20, "scores": { "edge_retention": 9.1, "steel_quality": 9.2, "balance": 8.3, "handle_ergonomics": 7.9, "out_of_box_sharpness": 8.7, "fit_and_finish": 8.5, "corrosion_resistance": 3.9 }, "methodology_notes": "High-performance rustic finish.", "signed_at": "2026-01-20T12:00:00Z" },
+    { "attestation_id": "att_0035", "product_id": "prod_mazaki_kuro_gyuto_210", "creator_id": "cr_yamamoto_r", "testing_duration_days": 22, "scores": { "edge_retention": 9.0, "steel_quality": 9.1, "balance": 8.4, "handle_ergonomics": 7.9, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.5, "corrosion_resistance": 3.9 }, "methodology_notes": "Kurouchi finish adds character. Reactive.", "signed_at": "2026-01-27T12:00:00Z" },
+    { "attestation_id": "att_0036", "product_id": "prod_mazaki_kuro_gyuto_210", "creator_id": "cr_fox_b", "testing_duration_days": 10, "scores": { "edge_retention": 8.3, "steel_quality": 8.6, "balance": 7.8, "handle_ergonomics": 7.4, "out_of_box_sharpness": 8.2, "fit_and_finish": 8.0, "corrosion_resistance": 3.4 }, "methodology_notes": "Too reactive for most home cooks.", "signed_at": "2026-02-03T12:00:00Z" },
+
+    { "attestation_id": "att_0037", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_weber_t", "testing_duration_days": 30, "scores": { "edge_retention": 5.8, "steel_quality": 6.0, "balance": 7.8, "handle_ergonomics": 7.9, "out_of_box_sharpness": 6.5, "fit_and_finish": 8.0, "corrosion_resistance": 9.0 }, "methodology_notes": "X50CrMoV15 at 58 HRC is what it is. Dulls within a week of daily use.", "signed_at": "2026-01-14T12:00:00Z" },
+    { "attestation_id": "att_0038", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_bauer_k", "testing_duration_days": 28, "scores": { "edge_retention": 5.9, "steel_quality": 6.1, "balance": 7.7, "handle_ergonomics": 8.0, "out_of_box_sharpness": 6.6, "fit_and_finish": 8.1, "corrosion_resistance": 9.1 }, "methodology_notes": "Durable, forgiving, soft. Traditional German.", "signed_at": "2026-01-21T12:00:00Z" },
+    { "attestation_id": "att_0039", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_rivera_a", "testing_duration_days": 21, "scores": { "edge_retention": 6.2, "steel_quality": 6.3, "balance": 7.9, "handle_ergonomics": 8.1, "out_of_box_sharpness": 7.0, "fit_and_finish": 8.2, "corrosion_resistance": 9.2 }, "methodology_notes": "Reliable home knife. Honing maintains usable edge.", "signed_at": "2026-01-28T12:00:00Z" },
+    { "attestation_id": "att_0040", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_hassan_n", "testing_duration_days": 25, "scores": { "edge_retention": 6.4, "steel_quality": 6.5, "balance": 8.0, "handle_ergonomics": 8.2, "out_of_box_sharpness": 7.2, "fit_and_finish": 8.3, "corrosion_resistance": 9.2 }, "methodology_notes": "Honest home knife. Heavy.", "signed_at": "2026-02-04T12:00:00Z" },
+    { "attestation_id": "att_0041", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_fox_b", "testing_duration_days": 14, "scores": { "edge_retention": 6.5, "steel_quality": 6.6, "balance": 8.0, "handle_ergonomics": 8.2, "out_of_box_sharpness": 7.3, "fit_and_finish": 8.2, "corrosion_resistance": 9.3 }, "methodology_notes": "You can drop it and it's fine.", "signed_at": "2026-02-11T12:00:00Z" },
+    { "attestation_id": "att_0042", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_chen_s", "testing_duration_days": 20, "scores": { "edge_retention": 5.9, "steel_quality": 6.0, "balance": 7.8, "handle_ergonomics": 8.0, "out_of_box_sharpness": 6.6, "fit_and_finish": 8.0, "corrosion_resistance": 9.0 }, "methodology_notes": "Benchmark German. Nothing more, nothing less.", "signed_at": "2026-02-18T12:00:00Z" },
+    { "attestation_id": "att_0043", "product_id": "prod_wusthof_classic_8", "creator_id": "cr_morales_d", "testing_duration_days": 18, "scores": { "edge_retention": 6.0, "steel_quality": 6.1, "balance": 7.9, "handle_ergonomics": 8.1, "out_of_box_sharpness": 6.7, "fit_and_finish": 8.1, "corrosion_resistance": 9.0 }, "methodology_notes": "Great butchery knife for weight.", "signed_at": "2026-02-25T12:00:00Z" },
+
+    { "attestation_id": "att_0044", "product_id": "prod_henckels_pro_8", "creator_id": "cr_weber_t", "testing_duration_days": 26, "scores": { "edge_retention": 5.6, "steel_quality": 5.9, "balance": 7.6, "handle_ergonomics": 7.8, "out_of_box_sharpness": 6.3, "fit_and_finish": 7.8, "corrosion_resistance": 9.0 }, "methodology_notes": "Near-clone of Wusthof, slightly softer steel.", "signed_at": "2026-01-16T12:00:00Z" },
+    { "attestation_id": "att_0045", "product_id": "prod_henckels_pro_8", "creator_id": "cr_bauer_k", "testing_duration_days": 24, "scores": { "edge_retention": 5.7, "steel_quality": 5.9, "balance": 7.7, "handle_ergonomics": 7.9, "out_of_box_sharpness": 6.4, "fit_and_finish": 7.9, "corrosion_resistance": 9.1 }, "methodology_notes": "Acceptable workhorse.", "signed_at": "2026-01-23T12:00:00Z" },
+    { "attestation_id": "att_0046", "product_id": "prod_henckels_pro_8", "creator_id": "cr_hassan_n", "testing_duration_days": 20, "scores": { "edge_retention": 6.1, "steel_quality": 6.2, "balance": 7.8, "handle_ergonomics": 8.0, "out_of_box_sharpness": 6.8, "fit_and_finish": 8.0, "corrosion_resistance": 9.1 }, "methodology_notes": "Common home knife.", "signed_at": "2026-01-30T12:00:00Z" },
+    { "attestation_id": "att_0047", "product_id": "prod_henckels_pro_8", "creator_id": "cr_fox_b", "testing_duration_days": 12, "scores": { "edge_retention": 6.3, "steel_quality": 6.3, "balance": 7.9, "handle_ergonomics": 8.0, "out_of_box_sharpness": 6.9, "fit_and_finish": 8.0, "corrosion_resistance": 9.2 }, "methodology_notes": "Cheap Henckels are different — this Pro S is solid.", "signed_at": "2026-02-06T12:00:00Z" },
+    { "attestation_id": "att_0048", "product_id": "prod_henckels_pro_8", "creator_id": "cr_rivera_a", "testing_duration_days": 18, "scores": { "edge_retention": 6.0, "steel_quality": 6.1, "balance": 7.7, "handle_ergonomics": 7.9, "out_of_box_sharpness": 6.6, "fit_and_finish": 7.9, "corrosion_resistance": 9.0 }, "methodology_notes": "Dependable.", "signed_at": "2026-02-13T12:00:00Z" },
+
+    { "attestation_id": "att_0049", "product_id": "prod_victorinox_fibrox_8", "creator_id": "cr_rivera_a", "testing_duration_days": 30, "scores": { "edge_retention": 5.0, "steel_quality": 5.2, "balance": 7.2, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.4, "fit_and_finish": 6.8, "corrosion_resistance": 9.0 }, "methodology_notes": "Stamped, soft, sharp-enough out of box. Needs frequent honing.", "signed_at": "2026-01-09T12:00:00Z" },
+    { "attestation_id": "att_0050", "product_id": "prod_victorinox_fibrox_8", "creator_id": "cr_fox_b", "testing_duration_days": 14, "scores": { "edge_retention": 5.4, "steel_quality": 5.5, "balance": 7.3, "handle_ergonomics": 7.9, "out_of_box_sharpness": 7.6, "fit_and_finish": 6.9, "corrosion_resistance": 9.1 }, "methodology_notes": "Unbeatable at $52.", "signed_at": "2026-01-16T12:00:00Z" },
+    { "attestation_id": "att_0051", "product_id": "prod_victorinox_fibrox_8", "creator_id": "cr_hassan_n", "testing_duration_days": 24, "scores": { "edge_retention": 5.3, "steel_quality": 5.4, "balance": 7.3, "handle_ergonomics": 7.9, "out_of_box_sharpness": 7.5, "fit_and_finish": 6.9, "corrosion_resistance": 9.0 }, "methodology_notes": "Lightweight value.", "signed_at": "2026-01-23T12:00:00Z" },
+    { "attestation_id": "att_0052", "product_id": "prod_victorinox_fibrox_8", "creator_id": "cr_bauer_k", "testing_duration_days": 20, "scores": { "edge_retention": 5.1, "steel_quality": 5.3, "balance": 7.2, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.3, "fit_and_finish": 6.8, "corrosion_resistance": 9.0 }, "methodology_notes": "Pro-kitchen disposable. Great for the price.", "signed_at": "2026-01-30T12:00:00Z" },
+    { "attestation_id": "att_0053", "product_id": "prod_victorinox_fibrox_8", "creator_id": "cr_morales_d", "testing_duration_days": 22, "scores": { "edge_retention": 5.0, "steel_quality": 5.2, "balance": 7.1, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.3, "fit_and_finish": 6.7, "corrosion_resistance": 8.9 }, "methodology_notes": "Butchery workhorse.", "signed_at": "2026-02-06T12:00:00Z" },
+
+    { "attestation_id": "att_0054", "product_id": "prod_global_g2", "creator_id": "cr_chen_s", "testing_duration_days": 22, "scores": { "edge_retention": 6.2, "steel_quality": 6.5, "balance": 8.1, "handle_ergonomics": 6.8, "out_of_box_sharpness": 7.4, "fit_and_finish": 8.0, "corrosion_resistance": 9.1 }, "methodology_notes": "CROMOVA 18 is mid. Handle polarizing.", "signed_at": "2026-01-11T12:00:00Z" },
+    { "attestation_id": "att_0055", "product_id": "prod_global_g2", "creator_id": "cr_weber_t", "testing_duration_days": 20, "scores": { "edge_retention": 6.0, "steel_quality": 6.3, "balance": 8.0, "handle_ergonomics": 6.7, "out_of_box_sharpness": 7.2, "fit_and_finish": 7.9, "corrosion_resistance": 9.0 }, "methodology_notes": "Handle gets slippery when wet.", "signed_at": "2026-01-18T12:00:00Z" },
+    { "attestation_id": "att_0056", "product_id": "prod_global_g2", "creator_id": "cr_rivera_a", "testing_duration_days": 18, "scores": { "edge_retention": 6.3, "steel_quality": 6.5, "balance": 8.2, "handle_ergonomics": 6.9, "out_of_box_sharpness": 7.5, "fit_and_finish": 8.1, "corrosion_resistance": 9.2 }, "methodology_notes": "Light; love it or hate it.", "signed_at": "2026-01-25T12:00:00Z" },
+    { "attestation_id": "att_0057", "product_id": "prod_global_g2", "creator_id": "cr_hassan_n", "testing_duration_days": 16, "scores": { "edge_retention": 6.4, "steel_quality": 6.5, "balance": 8.1, "handle_ergonomics": 6.9, "out_of_box_sharpness": 7.5, "fit_and_finish": 8.1, "corrosion_resistance": 9.1 }, "methodology_notes": "Fine.", "signed_at": "2026-02-01T12:00:00Z" },
+
+    { "attestation_id": "att_0058", "product_id": "prod_shun_classic_8", "creator_id": "cr_chen_s", "testing_duration_days": 24, "scores": { "edge_retention": 7.2, "steel_quality": 7.5, "balance": 7.9, "handle_ergonomics": 7.5, "out_of_box_sharpness": 8.3, "fit_and_finish": 8.6, "corrosion_resistance": 8.8 }, "methodology_notes": "VG-MAX core is respectable; Damascus is cosmetic.", "signed_at": "2026-01-13T12:00:00Z" },
+    { "attestation_id": "att_0059", "product_id": "prod_shun_classic_8", "creator_id": "cr_weber_t", "testing_duration_days": 22, "scores": { "edge_retention": 7.0, "steel_quality": 7.3, "balance": 7.8, "handle_ergonomics": 7.4, "out_of_box_sharpness": 8.1, "fit_and_finish": 8.5, "corrosion_resistance": 8.7 }, "methodology_notes": "Chips if used on hard roots at this geometry.", "signed_at": "2026-01-20T12:00:00Z" },
+    { "attestation_id": "att_0060", "product_id": "prod_shun_classic_8", "creator_id": "cr_dubois_l", "testing_duration_days": 20, "scores": { "edge_retention": 7.1, "steel_quality": 7.4, "balance": 7.9, "handle_ergonomics": 7.5, "out_of_box_sharpness": 8.2, "fit_and_finish": 8.5, "corrosion_resistance": 8.7 }, "methodology_notes": "D-shaped handle favors right-handers.", "signed_at": "2026-01-27T12:00:00Z" },
+    { "attestation_id": "att_0061", "product_id": "prod_shun_classic_8", "creator_id": "cr_hassan_n", "testing_duration_days": 18, "scores": { "edge_retention": 7.3, "steel_quality": 7.5, "balance": 8.0, "handle_ergonomics": 7.6, "out_of_box_sharpness": 8.3, "fit_and_finish": 8.6, "corrosion_resistance": 8.8 }, "methodology_notes": "Looks great in the block.", "signed_at": "2026-02-03T12:00:00Z" },
+
+    { "attestation_id": "att_0062", "product_id": "prod_misono_uX10_210", "creator_id": "cr_park_j", "testing_duration_days": 26, "scores": { "edge_retention": 7.6, "steel_quality": 7.8, "balance": 8.4, "handle_ergonomics": 8.2, "out_of_box_sharpness": 8.5, "fit_and_finish": 8.5, "corrosion_resistance": 8.8 }, "methodology_notes": "Professional favorite. Swedish stainless is balanced.", "signed_at": "2026-01-14T12:00:00Z" },
+    { "attestation_id": "att_0063", "product_id": "prod_misono_uX10_210", "creator_id": "cr_bauer_k", "testing_duration_days": 30, "scores": { "edge_retention": 7.5, "steel_quality": 7.7, "balance": 8.3, "handle_ergonomics": 8.2, "out_of_box_sharpness": 8.4, "fit_and_finish": 8.4, "corrosion_resistance": 8.7 }, "methodology_notes": "Best stainless around 60 HRC.", "signed_at": "2026-01-21T12:00:00Z" },
+    { "attestation_id": "att_0064", "product_id": "prod_misono_uX10_210", "creator_id": "cr_nakamura_k", "testing_duration_days": 22, "scores": { "edge_retention": 7.7, "steel_quality": 7.8, "balance": 8.4, "handle_ergonomics": 8.2, "out_of_box_sharpness": 8.5, "fit_and_finish": 8.5, "corrosion_resistance": 8.8 }, "methodology_notes": "If you want stainless and a western handle, this.", "signed_at": "2026-01-28T12:00:00Z" },
+
+    { "attestation_id": "att_0065", "product_id": "prod_tojiro_dp_210", "creator_id": "cr_fox_b", "testing_duration_days": 14, "scores": { "edge_retention": 7.2, "steel_quality": 7.4, "balance": 7.9, "handle_ergonomics": 7.6, "out_of_box_sharpness": 8.0, "fit_and_finish": 7.8, "corrosion_resistance": 8.7 }, "methodology_notes": "Best value Japanese gyuto under $100.", "signed_at": "2026-01-15T12:00:00Z" },
+    { "attestation_id": "att_0066", "product_id": "prod_tojiro_dp_210", "creator_id": "cr_hassan_n", "testing_duration_days": 20, "scores": { "edge_retention": 7.4, "steel_quality": 7.5, "balance": 8.0, "handle_ergonomics": 7.7, "out_of_box_sharpness": 8.1, "fit_and_finish": 7.9, "corrosion_resistance": 8.8 }, "methodology_notes": "Intro Japanese.", "signed_at": "2026-01-22T12:00:00Z" },
+    { "attestation_id": "att_0067", "product_id": "prod_tojiro_dp_210", "creator_id": "cr_rivera_a", "testing_duration_days": 18, "scores": { "edge_retention": 7.3, "steel_quality": 7.4, "balance": 7.9, "handle_ergonomics": 7.6, "out_of_box_sharpness": 8.0, "fit_and_finish": 7.8, "corrosion_resistance": 8.7 }, "methodology_notes": "Good first upgrade.", "signed_at": "2026-01-29T12:00:00Z" },
+    { "attestation_id": "att_0068", "product_id": "prod_tojiro_dp_210", "creator_id": "cr_chen_s", "testing_duration_days": 22, "scores": { "edge_retention": 7.2, "steel_quality": 7.4, "balance": 7.8, "handle_ergonomics": 7.5, "out_of_box_sharpness": 7.9, "fit_and_finish": 7.7, "corrosion_resistance": 8.7 }, "methodology_notes": "Reliable VG10.", "signed_at": "2026-02-05T12:00:00Z" },
+
+    { "attestation_id": "att_0069", "product_id": "prod_misen_chef_8", "creator_id": "cr_fox_b", "testing_duration_days": 12, "scores": { "edge_retention": 6.5, "steel_quality": 6.8, "balance": 7.4, "handle_ergonomics": 7.6, "out_of_box_sharpness": 7.4, "fit_and_finish": 7.3, "corrosion_resistance": 8.6 }, "methodology_notes": "Heavy for its class.", "signed_at": "2026-01-16T12:00:00Z" },
+    { "attestation_id": "att_0070", "product_id": "prod_misen_chef_8", "creator_id": "cr_hassan_n", "testing_duration_days": 18, "scores": { "edge_retention": 6.7, "steel_quality": 7.0, "balance": 7.5, "handle_ergonomics": 7.7, "out_of_box_sharpness": 7.6, "fit_and_finish": 7.4, "corrosion_resistance": 8.7 }, "methodology_notes": "Solid, not special.", "signed_at": "2026-01-23T12:00:00Z" },
+    { "attestation_id": "att_0071", "product_id": "prod_misen_chef_8", "creator_id": "cr_rivera_a", "testing_duration_days": 20, "scores": { "edge_retention": 6.6, "steel_quality": 6.9, "balance": 7.4, "handle_ergonomics": 7.6, "out_of_box_sharpness": 7.5, "fit_and_finish": 7.3, "corrosion_resistance": 8.6 }, "methodology_notes": "Good DTC value.", "signed_at": "2026-01-30T12:00:00Z" },
+    { "attestation_id": "att_0072", "product_id": "prod_misen_chef_8", "creator_id": "cr_weber_t", "testing_duration_days": 16, "scores": { "edge_retention": 6.4, "steel_quality": 6.7, "balance": 7.3, "handle_ergonomics": 7.5, "out_of_box_sharpness": 7.3, "fit_and_finish": 7.2, "corrosion_resistance": 8.6 }, "methodology_notes": "AUS-10 at this price is fine.", "signed_at": "2026-02-06T12:00:00Z" },
+
+    { "attestation_id": "att_0073", "product_id": "prod_made_in_chef_8", "creator_id": "cr_dubois_l", "testing_duration_days": 20, "scores": { "edge_retention": 6.2, "steel_quality": 6.4, "balance": 7.6, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.1, "fit_and_finish": 8.0, "corrosion_resistance": 9.0 }, "methodology_notes": "Thiers-forged but standard steel.", "signed_at": "2026-01-17T12:00:00Z" },
+    { "attestation_id": "att_0074", "product_id": "prod_made_in_chef_8", "creator_id": "cr_weber_t", "testing_duration_days": 18, "scores": { "edge_retention": 6.0, "steel_quality": 6.3, "balance": 7.5, "handle_ergonomics": 7.7, "out_of_box_sharpness": 6.9, "fit_and_finish": 7.9, "corrosion_resistance": 9.0 }, "methodology_notes": "Feels like Wusthof at DTC pricing.", "signed_at": "2026-01-24T12:00:00Z" },
+    { "attestation_id": "att_0075", "product_id": "prod_made_in_chef_8", "creator_id": "cr_hassan_n", "testing_duration_days": 16, "scores": { "edge_retention": 6.3, "steel_quality": 6.5, "balance": 7.6, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.1, "fit_and_finish": 8.0, "corrosion_resistance": 9.1 }, "methodology_notes": "Fine.", "signed_at": "2026-01-31T12:00:00Z" },
+
+    { "attestation_id": "att_0076", "product_id": "prod_material_almost_chef", "creator_id": "cr_chen_s", "testing_duration_days": 14, "scores": { "edge_retention": 6.8, "steel_quality": 7.0, "balance": 7.6, "handle_ergonomics": 7.7, "out_of_box_sharpness": 7.6, "fit_and_finish": 7.8, "corrosion_resistance": 8.8 }, "methodology_notes": "Short length constrains use.", "signed_at": "2026-01-18T12:00:00Z" },
+    { "attestation_id": "att_0077", "product_id": "prod_material_almost_chef", "creator_id": "cr_rivera_a", "testing_duration_days": 20, "scores": { "edge_retention": 7.0, "steel_quality": 7.1, "balance": 7.7, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.7, "fit_and_finish": 7.9, "corrosion_resistance": 8.8 }, "methodology_notes": "Design-forward, decent steel.", "signed_at": "2026-01-25T12:00:00Z" },
+    { "attestation_id": "att_0078", "product_id": "prod_material_almost_chef", "creator_id": "cr_hassan_n", "testing_duration_days": 18, "scores": { "edge_retention": 6.9, "steel_quality": 7.0, "balance": 7.6, "handle_ergonomics": 7.8, "out_of_box_sharpness": 7.6, "fit_and_finish": 7.8, "corrosion_resistance": 8.8 }, "methodology_notes": "Cute, small.", "signed_at": "2026-02-01T12:00:00Z" },
+
+    { "attestation_id": "att_0079", "product_id": "prod_mac_mth80", "creator_id": "cr_park_j", "testing_duration_days": 26, "scores": { "edge_retention": 7.7, "steel_quality": 7.9, "balance": 8.3, "handle_ergonomics": 8.1, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.3, "corrosion_resistance": 8.9 }, "methodology_notes": "Thin, nimble, ubiquitous recommendation for good reason.", "signed_at": "2026-01-19T12:00:00Z" },
+    { "attestation_id": "att_0080", "product_id": "prod_mac_mth80", "creator_id": "cr_chen_s", "testing_duration_days": 22, "scores": { "edge_retention": 7.6, "steel_quality": 7.8, "balance": 8.2, "handle_ergonomics": 8.0, "out_of_box_sharpness": 8.5, "fit_and_finish": 8.2, "corrosion_resistance": 8.8 }, "methodology_notes": "Consistently good.", "signed_at": "2026-01-26T12:00:00Z" },
+    { "attestation_id": "att_0081", "product_id": "prod_mac_mth80", "creator_id": "cr_dubois_l", "testing_duration_days": 20, "scores": { "edge_retention": 7.7, "steel_quality": 7.9, "balance": 8.3, "handle_ergonomics": 8.1, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.3, "corrosion_resistance": 8.9 }, "methodology_notes": "Wirecutter pick for a reason.", "signed_at": "2026-02-02T12:00:00Z" },
+    { "attestation_id": "att_0082", "product_id": "prod_mac_mth80", "creator_id": "cr_rivera_a", "testing_duration_days": 18, "scores": { "edge_retention": 7.8, "steel_quality": 7.9, "balance": 8.3, "handle_ergonomics": 8.1, "out_of_box_sharpness": 8.6, "fit_and_finish": 8.3, "corrosion_resistance": 8.9 }, "methodology_notes": "Great value at $165.", "signed_at": "2026-02-09T12:00:00Z" },
+
+    { "attestation_id": "att_0083", "product_id": "prod_kato_workshop_240", "creator_id": "cr_nakamura_k", "testing_duration_days": 40, "scores": { "edge_retention": 9.7, "steel_quality": 9.7, "balance": 8.8, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.4, "fit_and_finish": 9.6, "corrosion_resistance": 5.4 }, "methodology_notes": "Aogami Super at 65 HRC. Unicorn tier. Heavy 240.", "signed_at": "2026-01-22T12:00:00Z" },
+    { "attestation_id": "att_0084", "product_id": "prod_kato_workshop_240", "creator_id": "cr_tanaka_h", "testing_duration_days": 35, "scores": { "edge_retention": 9.6, "steel_quality": 9.7, "balance": 8.9, "handle_ergonomics": 8.4, "out_of_box_sharpness": 9.3, "fit_and_finish": 9.6, "corrosion_resistance": 5.3 }, "methodology_notes": "Long waitlist; delivered quality.", "signed_at": "2026-01-29T12:00:00Z" },
+    { "attestation_id": "att_0085", "product_id": "prod_kato_workshop_240", "creator_id": "cr_oconnell_s", "testing_duration_days": 45, "scores": { "edge_retention": 9.8, "steel_quality": 9.7, "balance": 8.8, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.4, "fit_and_finish": 9.6, "corrosion_resistance": 5.3 }, "methodology_notes": "Highest edge retention in any test I've run.", "signed_at": "2026-02-05T12:00:00Z" },
+
+    { "attestation_id": "att_0086", "product_id": "prod_masamoto_ks_gyuto_210", "creator_id": "cr_yamamoto_r", "testing_duration_days": 28, "scores": { "edge_retention": 9.0, "steel_quality": 9.2, "balance": 8.7, "handle_ergonomics": 8.2, "out_of_box_sharpness": 9.0, "fit_and_finish": 9.2, "corrosion_resistance": 4.9 }, "methodology_notes": "Tokyo pro kitchen standard.", "signed_at": "2026-01-23T12:00:00Z" },
+    { "attestation_id": "att_0087", "product_id": "prod_masamoto_ks_gyuto_210", "creator_id": "cr_tanaka_h", "testing_duration_days": 24, "scores": { "edge_retention": 9.1, "steel_quality": 9.2, "balance": 8.8, "handle_ergonomics": 8.3, "out_of_box_sharpness": 9.1, "fit_and_finish": 9.2, "corrosion_resistance": 4.9 }, "methodology_notes": "Shirogami #2, reliable.", "signed_at": "2026-01-30T12:00:00Z" },
+    { "attestation_id": "att_0088", "product_id": "prod_masamoto_ks_gyuto_210", "creator_id": "cr_park_j", "testing_duration_days": 20, "scores": { "edge_retention": 8.9, "steel_quality": 9.0, "balance": 8.6, "handle_ergonomics": 8.1, "out_of_box_sharpness": 8.9, "fit_and_finish": 9.1, "corrosion_resistance": 4.8 }, "methodology_notes": "Pro staple.", "signed_at": "2026-02-06T12:00:00Z" }
+  ],
+  "outcomes": [
+    { "outcome_id": "out_0001", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "edge_retention_heavy", "event": "kept",         "satisfaction": 0.96, "reported_at": "2026-02-28T00:00:00Z" },
+    { "outcome_id": "out_0002", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "edge_retention_heavy", "event": "repurchased",  "satisfaction": 0.94, "reported_at": "2026-03-05T00:00:00Z" },
+    { "outcome_id": "out_0003", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "carbon_steel_friendly","event": "kept",         "satisfaction": 0.95, "reported_at": "2026-03-10T00:00:00Z" },
+    { "outcome_id": "out_0004", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "carbon_steel_friendly","event": "kept",         "satisfaction": 0.93, "reported_at": "2026-03-15T00:00:00Z" },
+    { "outcome_id": "out_0005", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "balance_focused",      "event": "kept",         "satisfaction": 0.88, "reported_at": "2026-03-20T00:00:00Z" },
+    { "outcome_id": "out_0006", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "low_maintenance",      "event": "returned",     "satisfaction": 0.45, "reported_at": "2026-03-22T00:00:00Z" },
+    { "outcome_id": "out_0007", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "edge_retention_heavy", "event": "kept",         "satisfaction": 0.97, "reported_at": "2026-03-28T00:00:00Z" },
+    { "outcome_id": "out_0008", "product_id": "prod_nakamura_aogami_gyuto_210", "user_profile_tag": "edge_retention_heavy", "event": "repurchased",  "satisfaction": 0.95, "reported_at": "2026-04-02T00:00:00Z" },
+
+    { "outcome_id": "out_0009", "product_id": "prod_takamura_r2_migaki_210", "user_profile_tag": "balance_focused",          "event": "kept",         "satisfaction": 0.90, "reported_at": "2026-03-01T00:00:00Z" },
+    { "outcome_id": "out_0010", "product_id": "prod_takamura_r2_migaki_210", "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.91, "reported_at": "2026-03-08T00:00:00Z" },
+    { "outcome_id": "out_0011", "product_id": "prod_takamura_r2_migaki_210", "user_profile_tag": "edge_retention_heavy",     "event": "kept",         "satisfaction": 0.84, "reported_at": "2026-03-14T00:00:00Z" },
+
+    { "outcome_id": "out_0012", "product_id": "prod_yoshikane_skd_210",    "user_profile_tag": "edge_retention_heavy",     "event": "kept",         "satisfaction": 0.92, "reported_at": "2026-03-02T00:00:00Z" },
+    { "outcome_id": "out_0013", "product_id": "prod_yoshikane_skd_210",    "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.89, "reported_at": "2026-03-09T00:00:00Z" },
+    { "outcome_id": "out_0014", "product_id": "prod_yoshikane_skd_210",    "user_profile_tag": "edge_retention_heavy",     "event": "repurchased",  "satisfaction": 0.93, "reported_at": "2026-03-18T00:00:00Z" },
+
+    { "outcome_id": "out_0015", "product_id": "prod_konosuke_fm_210",      "user_profile_tag": "carbon_steel_friendly",    "event": "kept",         "satisfaction": 0.93, "reported_at": "2026-03-03T00:00:00Z" },
+    { "outcome_id": "out_0016", "product_id": "prod_konosuke_fm_210",      "user_profile_tag": "balance_focused",          "event": "kept",         "satisfaction": 0.91, "reported_at": "2026-03-11T00:00:00Z" },
+
+    { "outcome_id": "out_0017", "product_id": "prod_mazaki_kuro_gyuto_210","user_profile_tag": "carbon_steel_friendly",    "event": "kept",         "satisfaction": 0.88, "reported_at": "2026-03-04T00:00:00Z" },
+    { "outcome_id": "out_0018", "product_id": "prod_mazaki_kuro_gyuto_210","user_profile_tag": "low_maintenance",          "event": "returned",     "satisfaction": 0.38, "reported_at": "2026-03-07T00:00:00Z" },
+    { "outcome_id": "out_0019", "product_id": "prod_mazaki_kuro_gyuto_210","user_profile_tag": "low_maintenance",          "event": "returned",     "satisfaction": 0.41, "reported_at": "2026-03-13T00:00:00Z" },
+
+    { "outcome_id": "out_0020", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.72, "reported_at": "2026-03-05T00:00:00Z" },
+    { "outcome_id": "out_0021", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.38, "reported_at": "2026-03-09T00:00:00Z" },
+    { "outcome_id": "out_0022", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.42, "reported_at": "2026-03-12T00:00:00Z" },
+    { "outcome_id": "out_0023", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.74, "reported_at": "2026-03-16T00:00:00Z" },
+    { "outcome_id": "out_0024", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.70, "reported_at": "2026-03-20T00:00:00Z" },
+    { "outcome_id": "out_0025", "product_id": "prod_wusthof_classic_8",    "user_profile_tag": "carbon_steel_friendly",    "event": "returned",     "satisfaction": 0.36, "reported_at": "2026-03-25T00:00:00Z" },
+
+    { "outcome_id": "out_0026", "product_id": "prod_henckels_pro_8",       "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.70, "reported_at": "2026-03-06T00:00:00Z" },
+    { "outcome_id": "out_0027", "product_id": "prod_henckels_pro_8",       "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.40, "reported_at": "2026-03-14T00:00:00Z" },
+
+    { "outcome_id": "out_0028", "product_id": "prod_victorinox_fibrox_8",  "user_profile_tag": "budget_conscious",         "event": "kept",         "satisfaction": 0.85, "reported_at": "2026-03-02T00:00:00Z" },
+    { "outcome_id": "out_0029", "product_id": "prod_victorinox_fibrox_8",  "user_profile_tag": "budget_conscious",         "event": "kept",         "satisfaction": 0.82, "reported_at": "2026-03-08T00:00:00Z" },
+    { "outcome_id": "out_0030", "product_id": "prod_victorinox_fibrox_8",  "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.34, "reported_at": "2026-03-15T00:00:00Z" },
+
+    { "outcome_id": "out_0031", "product_id": "prod_global_g2",            "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.71, "reported_at": "2026-03-07T00:00:00Z" },
+    { "outcome_id": "out_0032", "product_id": "prod_global_g2",            "user_profile_tag": "balance_focused",          "event": "returned",     "satisfaction": 0.48, "reported_at": "2026-03-19T00:00:00Z" },
+
+    { "outcome_id": "out_0033", "product_id": "prod_shun_classic_8",       "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.76, "reported_at": "2026-03-04T00:00:00Z" },
+    { "outcome_id": "out_0034", "product_id": "prod_shun_classic_8",       "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.52, "reported_at": "2026-03-17T00:00:00Z" },
+
+    { "outcome_id": "out_0035", "product_id": "prod_misono_uX10_210",      "user_profile_tag": "balance_focused",          "event": "kept",         "satisfaction": 0.86, "reported_at": "2026-03-06T00:00:00Z" },
+    { "outcome_id": "out_0036", "product_id": "prod_misono_uX10_210",      "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.88, "reported_at": "2026-03-13T00:00:00Z" },
+
+    { "outcome_id": "out_0037", "product_id": "prod_tojiro_dp_210",        "user_profile_tag": "budget_conscious",         "event": "kept",         "satisfaction": 0.83, "reported_at": "2026-03-03T00:00:00Z" },
+    { "outcome_id": "out_0038", "product_id": "prod_tojiro_dp_210",        "user_profile_tag": "budget_conscious",         "event": "kept",         "satisfaction": 0.85, "reported_at": "2026-03-11T00:00:00Z" },
+
+    { "outcome_id": "out_0039", "product_id": "prod_misen_chef_8",         "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.68, "reported_at": "2026-03-08T00:00:00Z" },
+    { "outcome_id": "out_0040", "product_id": "prod_misen_chef_8",         "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.46, "reported_at": "2026-03-16T00:00:00Z" },
+
+    { "outcome_id": "out_0041", "product_id": "prod_made_in_chef_8",       "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.69, "reported_at": "2026-03-10T00:00:00Z" },
+    { "outcome_id": "out_0042", "product_id": "prod_made_in_chef_8",       "user_profile_tag": "edge_retention_heavy",     "event": "returned",     "satisfaction": 0.44, "reported_at": "2026-03-21T00:00:00Z" },
+
+    { "outcome_id": "out_0043", "product_id": "prod_mac_mth80",            "user_profile_tag": "balance_focused",          "event": "kept",         "satisfaction": 0.87, "reported_at": "2026-03-07T00:00:00Z" },
+    { "outcome_id": "out_0044", "product_id": "prod_mac_mth80",            "user_profile_tag": "low_maintenance",          "event": "kept",         "satisfaction": 0.88, "reported_at": "2026-03-14T00:00:00Z" },
+
+    { "outcome_id": "out_0045", "product_id": "prod_kato_workshop_240",    "user_profile_tag": "edge_retention_heavy",     "event": "kept",         "satisfaction": 0.98, "reported_at": "2026-03-10T00:00:00Z" },
+    { "outcome_id": "out_0046", "product_id": "prod_kato_workshop_240",    "user_profile_tag": "carbon_steel_friendly",    "event": "kept",         "satisfaction": 0.96, "reported_at": "2026-03-22T00:00:00Z" },
+
+    { "outcome_id": "out_0047", "product_id": "prod_masamoto_ks_gyuto_210","user_profile_tag": "carbon_steel_friendly",    "event": "kept",         "satisfaction": 0.92, "reported_at": "2026-03-12T00:00:00Z" },
+    { "outcome_id": "out_0048", "product_id": "prod_masamoto_ks_gyuto_210","user_profile_tag": "edge_retention_heavy",     "event": "kept",         "satisfaction": 0.90, "reported_at": "2026-03-24T00:00:00Z" }
+  ]
+}

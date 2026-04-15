@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Drachma
 
-## Getting Started
+**Attention economics for agents. Powered by people, not budgets.**
 
-First, run the development server:
+Drachma is a recommendation layer that AI agents query when making purchase decisions on behalf of users. Instead of ranking products by ad spend, SEO, and review volume, Drachma ranks by empirical product quality — verified by a network of human testers generating structured, machine-readable quality attestations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## The problem
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The $600B+ advertising industry is built on capturing human attention. As AI agents increasingly mediate purchasing decisions, that model breaks. Agents don't watch ads, don't respond to emotional branding, don't scroll feeds. In an agent-mediated world, the products that win are the ones with the best structured data and the biggest marketing budgets — not the best products.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This is the same problem Google had in 2001, except now the searcher isn't a human who can scroll past bad results. It's an agent that returns one answer.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The thesis
 
-## Learn More
+The ranking signal for agent-mediated commerce should be empirical product quality verified by humans with skin in the game, not marketing spend. Drachma provides:
 
-To learn more about Next.js, take a look at the following resources:
+1. A structured output format agents can consume.
+2. A ranking algorithm that rewards genuine product-market fit over brand dominance.
+3. A verified creator network that generates signed quality attestations.
+4. A closed feedback loop from post-purchase outcome data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How it works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Brands** submit products with structured specs to the Drachma feed. They pay for distribution into the signal network — not for placement or ranking.
+- **Creators** from a verified network receive products and test them against a standardized, category-specific attribute rubric. They publish signed attestations: per-attribute scores, testing duration, methodology notes.
+- **Agents** query the Drachma API with a user's preference profile. The API returns candidates ranked across four dimensions:
+  - Creator attestation score
+  - Post-purchase outcome data (repurchase, return, satisfaction among similar users)
+  - Niche fit to the user's preference model
+  - Value ratio (price vs. quality signal)
+- **Outcome data** flows back from the user's agent post-purchase, validating or degrading creator signals and refining matching for similar user profiles.
 
-## Deploy on Vercel
+## Why niche products win
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Traditional AI recommendation surfaces optimize for popularity proxies that systematically favor incumbents. Drachma replaces proxies with direct measurement. A knife made by a third-generation bladesmith in Okayama with 47 reviews and zero ad spend can outrank a global brand with 12,000 reviews, because 14 creators tested both and the data shows the small maker is empirically better for users who care about edge retention and carbon steel.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+A product 200 people love beats a product 10,000 people find mediocre — the audience isn't humans scrolling a feed, it's agents making procurement decisions.
+
+## Moat
+
+1. **Outcome data.** Drachma sits at the intersection of recommendations, brand performance, and post-purchase satisfaction. No single party — AI platforms, brands, retailers — sees the full longitudinal record. The more niche the match, the less replicable the data.
+2. **The creator network.** A curated, reputation-scored network of verified testers is both a data asset and a network effect. Trust relationships and the historical attestation corpus compound.
+
+## Revenue model
+
+Brands pay to be in the feed. Not for placement, not for ranking — for distribution into the signal network. The fee is access to evaluation, not influence over the algorithm.
+
+## Docs
+
+- [`docs/architecture.md`](docs/architecture.md) — system design and ranking model
+- [`docs/api.md`](docs/api.md) — Drachma API reference
+- [`docs/creators.md`](docs/creators.md) — creator network, attestations, reputation
+- [`docs/demo.md`](docs/demo.md) — demo scope and technical implementation
+- [`docs/gtm.md`](docs/gtm.md) — go-to-market phases
+
+## Repository
+
+This repo contains the Drachma demo: a FastAPI backend, a Python agent harness built on Claude tool use, and a Next.js frontend that visualizes the agent's decision process in real time. All mock data, no database, runs locally. See [`docs/demo.md`](docs/demo.md).
