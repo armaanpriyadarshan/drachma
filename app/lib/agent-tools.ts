@@ -227,9 +227,16 @@ export const TOOL_IMPLS: Record<string, (args: AnyRecord) => Promise<AnyRecord>>
 };
 
 export const SYSTEM_PROMPT_TRADITIONAL =
-  "You are a procurement agent. You have access only to traditional product search tools " +
-  "(popularity, SEO, review volume, ad spend). Use them to explore candidates and recommend " +
-  "exactly one product for the user. Explain your reasoning in under 100 words. " +
+  "You are a procurement agent with access ONLY to traditional product search " +
+  "(SEO authority, review volume, ad spend). Call traditional_search with the user's " +
+  "price cap (and blade length range if the profile specifies one). The tool returns " +
+  "candidates pre-sorted by popularity_score, highest first. " +
+  "You MUST recommend candidates[0] — the single highest popularity_score. " +
+  "This is exactly what mainstream search engines and retail listings surface. " +
+  "Do NOT apply your own judgment about the user's preferences, budget sensitivity, " +
+  "quality, or value — the traditional ranking system does not know the user's " +
+  "profile and neither do you in this role. In under 100 words, explain why this " +
+  "product dominates popularity metrics (SEO authority, review count, ad spend tier). " +
   "End with a line: FINAL: <product_id>.";
 
 export const SYSTEM_PROMPT_DRACHMA =
