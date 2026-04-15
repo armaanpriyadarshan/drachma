@@ -152,6 +152,9 @@ export default function Demo() {
 
   const drachmaFinalId = drachmaMessage?.content.match(/FINAL:\s*(\S+)/)?.[1];
   const drachmaCandidates = extractCandidatesFromDrachma(eventsByScenario.drachma, feedback);
+  const drachmaFinalName = drachmaFinalId
+    ? drachmaCandidates?.find((c) => c.product_id === drachmaFinalId)?.name
+    : undefined;
 
   return (
     <div className="flex flex-col gap-10">
@@ -190,6 +193,7 @@ export default function Demo() {
       <FeedbackLoop
         ready={doneScenarios.has("drachma") && !!drachmaFinalId}
         productId={drachmaFinalId}
+        productName={drachmaFinalName}
         preferenceVector={profile.preference_profile.weights}
         feedback={feedback}
         onSubmitted={setFeedback}
@@ -894,12 +898,14 @@ function RecommendationCard({
 function FeedbackLoop({
   ready,
   productId,
+  productName,
   preferenceVector,
   feedback,
   onSubmitted,
 }: {
   ready: boolean;
   productId?: string;
+  productName?: string;
   preferenceVector: Record<string, number>;
   feedback: OutcomeResponse | null;
   onSubmitted: (r: OutcomeResponse) => void;
@@ -945,24 +951,26 @@ function FeedbackLoop({
         <div className="bg-panel px-8 py-7 flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <span className="label">Product under review</span>
-            <span className="font-mono text-[13px]">
-              {productId ?? <span className="text-muted">— run the demo first —</span>}
+            <span className="display text-[18px] text-foreground">
+              {productName ?? (
+                <span className="text-sm italic text-muted">— run the demo first —</span>
+              )}
             </span>
           </div>
 
           <div className="flex flex-col gap-2">
-            <span className="label">Outcome event</span>
-            <div className="flex gap-0">
+            <span className="label">What happened after the purchase?</span>
+            <div className="flex flex-wrap gap-2 mt-1">
               {(["kept", "returned", "repurchased"] as const).map((opt) => (
                 <button
                   key={opt}
                   onClick={() => setEvent(opt)}
                   disabled={!ready}
                   className={
-                    "label-strong px-4 py-2.5 border -ml-px first:ml-0 transition-colors " +
+                    "label-strong px-4 py-2 rounded-full border transition-colors " +
                     (event === opt
-                      ? "border-foreground bg-foreground text-background"
-                      : "border-hairline-strong text-muted hover:text-foreground")
+                      ? "border-accent bg-accent text-background"
+                      : "border-hairline-strong text-muted hover:text-foreground hover:border-foreground")
                   }
                 >
                   {opt}
